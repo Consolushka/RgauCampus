@@ -1,0 +1,157 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Тег META, атрибут charset</title>
+</head>
+<body>
+
+<script>
+  class MapEntity {
+    title = ``;
+
+    constructor(title) {
+      this.title = title;
+    }
+
+    show() {
+      console.log(`   ${this.title}`);
+    }
+  }
+
+  class BuildingEntity extends MapEntity {
+  }
+
+  class PondEntity extends MapEntity {
+  }
+
+  class FieldEntity extends MapEntity {
+  }
+
+  function showEntities(mapEntities) {
+    console.log(`Все сущности:`);
+    mapEntities.forEach(entity => {
+      entity.show();
+    });
+
+    console.log(``);
+    console.log(`Только здания:`);
+    mapEntities.forEach(entity => {
+      if (entity instanceof BuildingEntity) {
+        entity.show();
+      }
+    });
+  }
+
+  function loadDb1() {
+    const dbData = {
+      fields: [
+        {
+          title: `Опытное поле №1`,
+        },
+        {
+          title: `Опытное поле №2`,
+        }
+      ],
+      buildings: [
+        {
+          title: `Ректорат`,
+        },
+        {
+          title: `Концертный зал`,
+        },
+        {
+          title: `Корпус №1`,
+        }
+      ],
+      ponds: [
+        {
+          title: `Пруд №1`,
+        },
+        {
+          title: `Пруд №2`,
+        }
+      ]
+    };
+
+    let mapEntities = [];
+
+    dbData.buildings.forEach(data => {
+      mapEntities.push(new BuildingEntity(data.title));
+    });
+
+    dbData.fields.forEach(data => {
+      mapEntities.push(new FieldEntity(data.title));
+    });
+
+    dbData.ponds.forEach(data => {
+      mapEntities.push(new PondEntity(data.title));
+    });
+
+    return mapEntities;
+  }
+
+  function loadDb2() {
+    const dbData = [
+      {
+        type: `field`,
+        title: `Опытное поле №1`,
+      },
+      {
+        type: `field`,
+        title: `Опытное поле №2`,
+      },
+      {
+        type: `building`,
+        title: `Ректорат`,
+      },
+      {
+        type: `building`,
+        title: `Концертный зал`,
+      },
+      {
+        type: `building`,
+        title: `Корпус №1`,
+      },
+      {
+        type: `pond`,
+        title: `Пруд №1`,
+      },
+      {
+        type: `pond`,
+        title: `Пруд №2`,
+      }
+    ];
+
+    let mapEntities = [];
+
+    dbData.forEach(data => {
+      let entity;
+
+      switch (data.type) {
+        case `building`:
+          entity = new BuildingEntity(data.title);
+          break;
+        case `field`:
+          entity = new FieldEntity(data.title);
+          break;
+        case `pond`:
+          entity = new PondEntity(data.title);
+          break;
+      }
+
+      mapEntities.push(entity);
+    });
+
+    return mapEntities;
+  }
+
+  console.log(``);
+  console.log(`Первая БД`);
+  showEntities(loadDb1());
+
+  console.log(``);
+  console.log(`Вторая БД`);
+  showEntities(loadDb2());
+</script>
+</body>
+</html>

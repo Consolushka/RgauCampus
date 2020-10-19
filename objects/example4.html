@@ -1,0 +1,313 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Тег META, атрибут charset</title>
+</head>
+<body>
+
+<div id="buildingList"></div>
+
+<div id="showContainer" style="border: 4px double black"></div>
+
+<template id="buildingTemplate">
+  <div>
+    <div class="js-pc-title"></div>
+    <div class="js-pc-floors" style="margin-left: 10px;"></div>
+  </div>
+</template>
+
+<template id="fieldTemplate">
+  <div>
+    <div class="js-pc-title"></div>
+  </div>
+</template>
+
+<template id="pondTemplate">
+  <div>
+    <div class="js-pc-title"></div>
+  </div>
+</template>
+
+<template id="floorTemplate">
+  <div>
+    <div>Этаж <span class="js-pc-number"></span></div>
+    <div style="margin-left: 10px">
+      <div class="js-pc-rooms"></div>
+      <div class="js-pc-deaneries"></div>
+      <div class="js-pc-cathedrae"></div>
+    </div>
+  </div>
+</template>
+
+<template id="roomTemplate">
+  <div class="floor__room">
+    <span class="floor__room-number js-pc-number">фыв</span>
+    <span class="floor__room-title js-pc-title">фыв</span>
+    <span class="floor__room-role js-pc-role">asdd</span>
+  </div>
+</template>
+
+<template id="deaneryTemplate">
+  <div>
+    <div class="js-pc-title"></div>
+  </div>
+</template>
+
+<template id="cathedraTemplate">
+  <div>
+    <div class="js-pc-title"></div>
+  </div>
+</template>
+
+<script src="./data3_4.js"></script>
+<script>
+  class ShowableEntity {
+    getTemplateSelector() {
+      return '#testTemplate';
+    }
+
+    getEntityContainer() {
+      return document.querySelector(this.getTemplateSelector()).content.firstElementChild.cloneNode(true);
+    }
+
+    buildInnerHtml(entityContainer) {
+    }
+
+    insertHtml(parentContainer) {
+      let entityContainer = this.getEntityContainer();
+
+      this.buildInnerHtml(entityContainer);
+
+      parentContainer.appendChild(entityContainer);
+    }
+  }
+
+  class MapEntity extends ShowableEntity {
+    title = ``;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+  }
+
+  class BuildingEntity extends MapEntity {
+    address;
+    floors;
+
+    constructor(data) {
+      super(data);
+
+      this.address = data.address;
+      this.floors = [];
+
+      if (typeof data.floors !== 'undefined') {
+        data.floors.forEach(entityData => this.addFloor(entityData));
+      }
+    }
+
+    addFloor(entityData) {
+      this.floors.push(new FloorEntity(entityData));
+    }
+
+    getTemplateSelector() {
+      return '#buildingTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+
+      let floorsPlaceholder = entityContainer.querySelector(`.js-pc-floors`);
+
+      this.floors.forEach(floor => {
+        floor.insertHtml(floorsPlaceholder);
+      });
+    }
+  }
+
+  class PondEntity extends MapEntity {
+    getTemplateSelector() {
+      return '#pondTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+    }
+  }
+
+  class FieldEntity extends MapEntity {
+    getTemplateSelector() {
+      return '#fieldTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+    }
+  }
+
+  class FloorEntity extends ShowableEntity {
+    number;
+    entities;
+
+    constructor(data) {
+      super();
+      this.number = data.number;
+      this.entities = {
+        rooms: [],
+        deaneries: [],
+        cathedrae: [],
+      }
+
+      if (typeof data.rooms !== 'undefined') {
+        data.rooms.forEach(entityData => this.addRoom(entityData));
+      }
+
+      if (typeof data.deaneries !== 'undefined') {
+        data.deaneries.forEach(entityData => this.addDeanery(entityData));
+      }
+
+      if (typeof data.cathedrae !== 'undefined') {
+        data.cathedrae.forEach(entityData => this.addCathedra(entityData));
+      }
+    }
+
+    addRoom(entityData) {
+      this.entities.rooms.push(new RoomEntity(entityData));
+    }
+
+    addDeanery(entityData) {
+      this.entities.deaneries.push(new DeaneryEntity(entityData));
+    }
+
+    addCathedra(entityData) {
+      this.entities.cathedrae.push(new CathedraEntity(entityData));
+    }
+
+    getTemplateSelector() {
+      return '#floorTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-number`).innerText = this.number;
+
+      if (this.entities.rooms.length) {
+        let roomsPlaceholder = entityContainer.querySelector(`.js-pc-rooms`);
+        this.entities.rooms.forEach(entity => {
+          entity.insertHtml(roomsPlaceholder);
+        });
+      }
+
+      if (this.entities.deaneries.length) {
+        let deaneriesPlaceholder = entityContainer.querySelector(`.js-pc-deaneries`);
+        this.entities.deaneries.forEach(entity => {
+          entity.insertHtml(deaneriesPlaceholder);
+        });
+      }
+
+      if (this.entities.cathedrae.length) {
+        let cathedraePlaceholder = entityContainer.querySelector(`.js-pc-cathedrae`);
+        this.entities.cathedrae.forEach(entity => {
+          entity.insertHtml(cathedraePlaceholder);
+        });
+      }
+    }
+  }
+
+  class RoomEntity extends ShowableEntity {
+    number;
+    title;
+    role;
+
+    constructor(data) {
+      super();
+      this.number = data.number;
+      this.title = data.title ?? '';
+      this.role = data.role ?? '';
+    }
+
+    getTemplateSelector() {
+      return '#roomTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-number`).innerText = this.number;
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+      entityContainer.querySelector(`.js-pc-role`).innerText = this.role;
+    }
+  }
+
+  class DeaneryEntity extends ShowableEntity {
+    title;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+
+    getTemplateSelector() {
+      return '#deaneryTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+    }
+  }
+
+  class CathedraEntity extends ShowableEntity {
+    title;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+
+    getTemplateSelector() {
+      return '#cathedraTemplate';
+    }
+
+    buildInnerHtml(entityContainer) {
+      entityContainer.querySelector(`.js-pc-title`).innerText = this.title;
+    }
+  }
+
+  function loadDb() {
+    const dbData = getData();
+
+    let mapEntities = [];
+
+    dbData.buildings.forEach(data => {
+      mapEntities.push(new BuildingEntity(data));
+    });
+
+    dbData.fields.forEach(data => {
+      mapEntities.push(new FieldEntity(data));
+    });
+
+    dbData.ponds.forEach(data => {
+      mapEntities.push(new PondEntity(data));
+    });
+
+    return mapEntities;
+  }
+
+  let entities = loadDb();
+
+  entities.forEach(entity => {
+    let clickElement = document.createElement(`p`);
+
+    clickElement.innerText = entity.title;
+    clickElement.entity = entity;
+
+    clickElement.onclick = (event) => {
+      let container = document.getElementById(`showContainer`);
+      let eventElement = event.target;
+
+      container.innerText = '';
+      eventElement.entity.insertHtml(container);
+    };
+
+    document.getElementById(`buildingList`).appendChild(clickElement);
+  });
+</script>
+</body>
+</html>

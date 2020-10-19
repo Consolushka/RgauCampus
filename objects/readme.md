@@ -1,0 +1,4 @@
+- [часть 1](readme1.md)
+- [часть 2](readme2.md)
+- [часть 3](readme3.md)
+- [часть 4](readme4.md)

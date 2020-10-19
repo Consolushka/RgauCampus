@@ -1,0 +1,200 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Тег META, атрибут charset</title>
+</head>
+<body>
+
+<script src="./data3_4.js"></script>
+
+<script>
+  class ShowableEntity {
+    show() {
+    }
+  }
+
+  class MapEntity extends ShowableEntity {
+    title = ``;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+
+    show() {
+      console.log(`   ${this.title}`);
+    }
+  }
+
+  class BuildingEntity extends MapEntity {
+    address;
+    floors;
+
+    constructor(data) {
+      super(data);
+
+      this.address = data.address;
+      this.floors = [];
+
+      if (typeof data.floors !== 'undefined') {
+        data.floors.forEach(entityData => this.addFloor(entityData));
+      }
+    }
+
+    addFloor(entityData) {
+      this.floors.push(new FloorEntity(entityData));
+    }
+
+    show() {
+      console.log(` Здание`);
+      console.log(`   ${this.title}, ${this.address}`);
+      this.floors.forEach(floor => floor.show());
+    }
+  }
+
+  class PondEntity extends MapEntity {
+    show() {
+      console.log(` Пруд`);
+      super.show();
+    }
+  }
+
+  class FieldEntity extends MapEntity {
+    show() {
+      console.log(` Поле`);
+      super.show();
+    }
+  }
+
+  class FloorEntity extends ShowableEntity {
+    number;
+    entities;
+
+    constructor(data) {
+      super();
+      this.number = data.number;
+      this.entities = {
+        rooms: [],
+        deaneries: [],
+        cathedrae: [],
+      }
+
+      if (typeof data.rooms !== 'undefined') {
+        data.rooms.forEach(entityData => this.addRoom(entityData));
+      }
+
+      if (typeof data.deaneries !== 'undefined') {
+        data.deaneries.forEach(entityData => this.addDeanery(entityData));
+      }
+
+      if (typeof data.cathedrae !== 'undefined') {
+        data.cathedrae.forEach(entityData => this.addCathedra(entityData));
+      }
+    }
+
+    addRoom(entityData) {
+      this.entities.rooms.push(new RoomEntity(entityData));
+    }
+
+    addDeanery(entityData) {
+      this.entities.deaneries.push(new DeaneryEntity(entityData));
+    }
+
+    addCathedra(entityData) {
+      this.entities.cathedrae.push(new CathedraEntity(entityData));
+    }
+
+    show() {
+      console.log(`    Этаж ${this.number}`);
+      if (this.entities.rooms.length) {
+        console.log(`      Комнаты`);
+        this.entities.rooms.forEach(entity => entity.show());
+      }
+
+      if (this.entities.deaneries.length) {
+        console.log(`      Деканаты`);
+        this.entities.deaneries.forEach(entity => entity.show());
+      }
+
+      if (this.entities.cathedrae.length) {
+        console.log(`      Кафедры`);
+        this.entities.cathedrae.forEach(entity => entity.show());
+      }
+    }
+  }
+
+  class RoomEntity extends ShowableEntity {
+    number;
+    title;
+    role;
+
+    constructor(data) {
+      super();
+      this.number = data.number;
+      this.title = data.title ?? '';
+      this.role = data.role ?? '';
+    }
+
+    show() {
+      console.log(`        Комната: ${this.number} ${this.title} ${this.role}`)
+    }
+  }
+
+  class DeaneryEntity extends ShowableEntity {
+    title;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+
+    show() {
+      console.log(`        Деканат: ${this.title}`)
+    }
+  }
+
+  class CathedraEntity extends ShowableEntity {
+    title;
+
+    constructor(data) {
+      super();
+      this.title = data.title;
+    }
+
+    show() {
+      console.log(`        Кафедра: ${this.title}`)
+    }
+  }
+
+  function showEntities(mapEntities) {
+    mapEntities.forEach(entity => {
+      if (entity instanceof BuildingEntity) {
+        entity.show();
+      }
+    });
+  }
+
+  function loadDb() {
+    const dbData = getData();
+
+    let mapEntities = [];
+
+    dbData.buildings.forEach(data => {
+      mapEntities.push(new BuildingEntity(data));
+    });
+
+    dbData.fields.forEach(data => {
+      mapEntities.push(new FieldEntity(data));
+    });
+
+    dbData.ponds.forEach(data => {
+      mapEntities.push(new PondEntity(data));
+    });
+
+    return mapEntities;
+  }
+
+  showEntities(loadDb());
+</script>
+</body>
+</html>

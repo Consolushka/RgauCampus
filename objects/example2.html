@@ -1,0 +1,119 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Тег META, атрибут charset</title>
+</head>
+<body>
+
+<script>
+  class MapEntity {
+    title = ``;
+
+    constructor(data) {
+      this.title = data.title;
+    }
+
+    show() {
+      console.log(`   ${this.title}`);
+    }
+  }
+
+  class BuildingEntity extends MapEntity {
+    address;
+
+    constructor(data) {
+      super(data);
+
+      this.address = data.address;
+    }
+
+    show() {
+      console.log(` Здание`);
+      console.log(`   ${this.title}, ${this.address}`);
+    }
+  }
+
+  class PondEntity extends MapEntity {
+    show() {
+      console.log(` Пруд`);
+      super.show();
+    }
+  }
+
+  class FieldEntity extends MapEntity {
+    show() {
+      console.log(` Поле`);
+      super.show();
+    }
+  }
+
+  function showEntities(mapEntities) {
+    console.log(`Все сущности:`);
+    mapEntities.forEach(entity => {
+      entity.show();
+    });
+
+    console.log(``);
+    console.log(`Только здания:`);
+    mapEntities.forEach(entity => {
+      if (entity instanceof BuildingEntity) {
+        entity.show();
+      }
+    });
+  }
+
+  function loadDb() {
+    const dbData = {
+      fields: [
+        {
+          title: `Опытное поле №1`,
+        },
+        {
+          title: `Опытное поле №2`,
+        }
+      ],
+      buildings: [
+        {
+          title: `Ректорат`,
+          address: `Лиственничная аллея 1`,
+        },
+        {
+          title: `Концертный зал`,
+          address: `ул. Тихая 5`,
+        },
+        {
+          title: `Корпус №1`,
+          address: `Лиственничная аллея 10`,
+        }
+      ],
+      ponds: [
+        {
+          title: `Пруд №1`,
+        },
+        {
+          title: `Пруд №2`,
+        }
+      ]
+    };
+
+    let mapEntities = [];
+
+    dbData.buildings.forEach(data => {
+      mapEntities.push(new BuildingEntity(data));
+    });
+
+    dbData.fields.forEach(data => {
+      mapEntities.push(new FieldEntity(data));
+    });
+
+    dbData.ponds.forEach(data => {
+      mapEntities.push(new PondEntity(data));
+    });
+
+    return mapEntities;
+  }
+
+  showEntities(loadDb());
+</script>
+</body>
+</html>
