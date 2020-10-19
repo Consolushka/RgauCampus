@@ -1,31 +1,69 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Тег META, атрибут charset</title>
-  </head>
-<body>
-
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  id="svg75"
-  width="341.76001"
-  height="245.75999"
-  viewBox="0 0 341.76001 245.75999"
-style="width: 100%; height: auto">
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg75"
+   width="341.76001"
+   height="245.75999"
+   viewBox="0 0 341.76001 245.75999"
+   sodipodi:docname="rgau-map.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
+  <metadata
+     id="metadata81">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs79" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview77"
+     showgrid="false"
+     inkscape:zoom="3.4586589"
+     inkscape:cx="0.072406772"
+     inkscape:cy="225.12317"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g83" />
   <path
-    style="fill:#26412e;stroke:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:0.20967743"
-    d="m 121.43435,202.20988 3.93939,-3.43341 6.28856,6.79454 -8.96301,8.1679 -6.21628,-7.22823 3.79482,-3.21657 1.15652,1.2288 -1.73478,1.51793 3.65026,4.15624 1.98777,-1.55407 -2.02391,-2.24076 1.0481,-1.04809 2.09618,2.31304 2.4576,-2.16847 -3.50569,-4.1201 -2.74673,2.06005 z"
-    id="four" />
+     style="fill:#26412e;stroke:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:0.20967743"
+     d="m 121.43435,202.20988 3.93939,-3.43341 6.28856,6.79454 -8.96301,8.1679 -6.21628,-7.22823 3.79482,-3.21657 1.15652,1.2288 -1.73478,1.51793 3.65026,4.15624 1.98777,-1.55407 -2.02391,-2.24076 1.0481,-1.04809 2.09618,2.31304 2.4576,-2.16847 -3.50569,-4.1201 -2.74673,2.06005 z"
+     id="four" />
   <g
-    id="g83"
-    style="display:inline;opacity:1">
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g83"
+     style="display:inline;opacity:1"
+     sodipodi:insensitive="true">
     <image
-      width="341.76001"
-      height="245.75999"
-      preserveAspectRatio="none"
-      xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7RoiUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAC0cAVoAAxsl
+       width="341.76001"
+       height="245.75999"
+       preserveAspectRatio="none"
+       xlink:href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7RoiUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAC0cAVoAAxsl
 RxwCAAACAAAcAgUAGdC60LDRgNGC0LAg0LrQsNC80L/Rg9GB0LAAOEJJTQQlAAAAAAAQAAVQ6M7u
 Z/DM3V7d2csRsThCSU0EOgAAAAABGQAAABAAAAABAAAAAAALcHJpbnRPdXRwdXQAAAAFAAAAAFBz
 dFNib29sAQAAAABJbnRlZW51bQAAAABJbnRlAAAAAENscm0AAAAPcHJpbnRTaXh0ZWVuQml0Ym9v
@@ -3564,30 +3602,6 @@ VXRm92TxIDCZR/iM96j8vLvHEDhU3+azyKfl5d44jIwuaxHSs1tzUqhK1rjiN6bDpYYJYXyMIke5
 wtfQEfjdOofeOI0OFzE36VmvekqDbvccQ/VU3+az3qPy8u8cQ/VU3+az3p+Xl3jiH6qm/wA1nvT8
 vLvHEf/Z
 "
-      id="image85" />
+       id="image85" />
   </g>
 </svg>
-
-
-<main class="card">
-  <p class="address"></p>
-</main>
-<template id="floors">
-  <div class="floors"></div>
-</template>
-
-<template id="floor">
-  <div class="floor">
-
-  </div>
-</template>
-
-<template id="room">
-  <div class="room-container">
-    <p class="room"></p>
-  </div>
-</template>
-<script src="./renderMap.js"></script>
-<script src="./blockModule.js"></script>
-</body>
-</html>
