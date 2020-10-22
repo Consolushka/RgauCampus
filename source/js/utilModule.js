@@ -1,11 +1,11 @@
 'use strict';
 
-(function (){
+(function () {
   window.utilModule = {
     FLOOR_TRANSLATOR: {
       1: {
         simple: `Первый`,
-    th: `Первом`
+        th: `Первом`
       },
       2: {
         simple: `Второй`,

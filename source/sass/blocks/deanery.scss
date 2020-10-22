@@ -1,0 +1,28 @@
+.deanery-floor {
+  font-size: 14px;
+}
+
+.deanery__rooms-list {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.deanery__rooms-list-item {
+  display: block;
+  padding: 3px;
+  border: 1px solid #3a7746;
+  margin: 0 5px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}

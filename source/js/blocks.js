@@ -1,101 +1,86 @@
-class Entity {
-  title;
+class MapEntity {
+  title = ``;
 
-  constructor(title) {
-    this.title = title;
+  constructor(data) {
+    this.title = data.title;
   }
 
-  buildHtml() {
-    return this.title;
-  }
-}
-
-class CardBlock extends Entity {
-  entities;
-
-  constructor(title) {
-    super(title);
-
-    this.entities = [];
-  }
-
-  addEntity(entity) {
-    this.entities.push(entity);
-  }
-
-  buildHtml() {
-    let result = this.title + "\n\n";
-
-    this.entities.forEach(
-      function (entity) {
-        result += entity.buildHtml() + "\n\n";
-      }
-    );
-
-    return result;
+  show() {
+    console.log(`   ${this.title}`);
   }
 }
 
-class Room extends Entity {
-  number;
+class BuildingEntity extends MapEntity {
+  address;
 
-  constructor(title, number) {
-    super(title);
+  constructor(data) {
+    super(data);
 
-    this.number = number;
-  }
-
-  buildHtml() {
-    return this.number + ': ' + super.buildHtml();
+    this.address = data.address;
   }
 }
 
-class Cathedra extends Entity {
-  buildHtml() {
-    return super.buildHtml();
+class PondEntity extends MapEntity {
+  show() {
+    console.log(` Пруд`);
+    super.show();
   }
 }
 
-class BuildingCard extends Entity {
-  blocks;
-
-  constructor(title) {
-    super(title);
-
-    this.blocks = [];
-  }
-
-  addBlock(block) {
-    this.blocks.push(block);
-  }
-
-  buildHtml() {
-    let result = this.title + "\n\n";
-
-    this.blocks.forEach(
-      function (block) {
-        result += block.buildHtml() + "\n\n";
-      }
-    );
-
-    return result;
+class FieldEntity extends MapEntity {
+  show() {
+    console.log(` Поле`);
+    super.show();
   }
 }
 
-let floor1 = new CardBlock('1 Этаж');
-floor1.addEntity(new Room('Туалет', 101));
-floor1.addEntity(new Cathedra('Кафедра информатики'));
-floor1.addEntity(new Room('Столовая', 102));
-floor1.addEntity(new Room('Лекционная', 103));
+const dbData = {
+  fields: [
+    {
+      title: 'Опытное поле №1',
+    },
+    {
+      title: 'Опытное поле №2',
+    }
+  ],
+  buildings: [
+    {
+      title: `Ректорат`,
+      address: `Лиственничная аллея 1`,
+    },
+    {
+      title: `Концертный зал`,
+      address: `ул. Тихая 5`,
+    },
+    {
+      title: `Корпус №1`,
+      address: `Лиственничная аллея 10`,
+    }
+  ],
+  ponds: [
+    {
+      title: 'Пруд №1',
+    },
+    {
+      title: 'Пруд №2',
+    }
+  ]
+};
 
-let floor2 = new CardBlock('2 Этаж');
-floor2.addEntity(new Room('Туалет', 201));
-floor2.addEntity(new Room('Столовая', 202));
-floor2.addEntity(new Room('Лекционная', 203));
+let mapEntities = [];
 
-let buildingCard=new BuildingCard('111');
+dbData.buildings.forEach(data => {
+  mapEntities.push(new BuildingEntity(data));
+});
 
-buildingCard.addBlock(floor1);
-buildingCard.addBlock(floor2);
+dbData.fields.forEach(data => {
+  mapEntities.push(new FieldEntity(data));
+});
 
-console.log(buildingCard.buildHtml());
+dbData.ponds.forEach(data => {
+  mapEntities.push(new PondEntity(data));
+});
+
+mapEntities.forEach(entity => {
+  entity.show();
+});

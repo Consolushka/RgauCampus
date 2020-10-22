@@ -2,7 +2,13 @@
   width: 100%;
 }
 
-.map-wrapper{
+.map-image__object {
+  cursor: pointer;
+  transition-duration: 200ms;
+
+  &:hover {
+    fill: darken(#3bd11d, 20%);
+  }
 }
 
 .map-image{

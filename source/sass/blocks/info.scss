@@ -1,5 +1,27 @@
-.info{
-  width: 25%;
+.info {
+  width: 33%;
   border-radius: 14px;
-  background-color: aliceblue;
+  background-color: #ffffff;
+}
+
+.info-name {
+  max-width: 75%;
+  margin-bottom: 10px;
+}
+
+.info__tabs-link:hover {
+  color: #3a7746;
+}
+
+.info-title {
+  color: #3a7746;
+}
+
+.info-separator {
+  padding: 8px 0;
+  padding-left: 5px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #3a7746;
+  }
 }
