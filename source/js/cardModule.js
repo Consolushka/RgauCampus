@@ -51,7 +51,6 @@
 
 
     fillFloorTemplate(campus) {
-
       let heading = document.createElement("h2");
       heading.className = "info-title floors__title title title--h3";
       heading.textContent = "Этажи";
@@ -72,7 +71,6 @@
 
 
     fillCathedraTemplate(campus) {
-
       let heading = document.createElement("h2");
       heading.className = "info-title cathedras__title title title--h3";
       heading.textContent = "Кафедры";
@@ -87,7 +85,6 @@
 
 
     fillDeaneryTemplate(campus) {
-
       let heading = document.createElement("h2");
       heading.className = "info-title deaneries__title title title--h3";
       heading.textContent = "Деканаты";
