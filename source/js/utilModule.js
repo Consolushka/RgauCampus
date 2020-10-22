@@ -23,6 +23,12 @@
         simple: `Пятый`,
         th: `Пятом`
       },
+    },
+    getSimpleTranslate(i) {
+      return this.FLOOR_TRANSLATOR[i + 1].simple;
+    },
+    getThTranslate(i) {
+      return this.FLOOR_TRANSLATOR[i + 1].th;
     }
   }
 })();
