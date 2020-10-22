@@ -10,7 +10,7 @@
   const DEANERY_CONTAINER = document.querySelector(`.info__deaneries`);
   window.cardModule = {
     popup: document.querySelector(`.info`),
-    show(campusNumber,x,y) {
+    show(campusNumber, x, y) {
       this.popup.classList.remove(`popup--hidden`);
       this.popup.querySelector(`.info__name-number`).textContent = `${campusNumber}`;
       this.popup.querySelector(`.info__floors`).innerHTML = ``;
@@ -20,11 +20,11 @@
       this.fillCathedraTemplate(window.dataModule.campuses[campusNumber - 1]);
       this.fillDeaneryTemplate(window.dataModule.campuses[campusNumber - 1]);
       this.popup.setAttribute(`style`, `left: ${x}px; top: ${y}px`);
-      this.popup.querySelector(`.popup-btn`).addEventListener(`click`,function(){
+      this.popup.querySelector(`.popup-btn`).addEventListener(`click`, function () {
         window.cardModule.popup.classList.add(`popup--hidden`);
       })
     },
-    fillFloorTemplate(campus){
+    fillFloorTemplate(campus) {
       let heading = document.createElement("h2");
       heading.className = "info-title floors__title title title--h3";
       heading.textContent = "Этажи";
