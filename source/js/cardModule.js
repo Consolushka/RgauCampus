@@ -54,6 +54,23 @@
 
     toggleTab(type, status) {
       this.popup.querySelector(`a.nav-link[href="#${type}"]`).hidden = status;
+      this.popup.querySelector(`.tab-pane#${type}`).hidden = status;
+      if (!status) {
+        this.popup.querySelectorAll('a.nav-link').forEach((link) => {
+          link.classList.remove('active');
+          link.classList.remove('show');
+        })
+        this.popup.querySelectorAll('.tab-pane').forEach((pane) => {
+          pane.classList.remove('active');
+          pane.classList.remove('show');
+          pane.classList.add('fade');
+        })
+        this.popup.querySelector(`a.nav-link[href="#${type}"]`).classList.add('active');
+        this.popup.querySelector(`a.nav-link[href="#${type}"]`).classList.add('show');
+        this.popup.querySelector(`.tab-pane#${type}`).classList.add('active');
+        this.popup.querySelector(`.tab-pane#${type}`).classList.add('show');
+        this.popup.querySelector(`.tab-pane#${type}`).classList.remove('fade');
+      }
     },
 
     hideTab(type, status) {
@@ -67,6 +84,7 @@
     fillFloorTemplate(campus) {
       if (typeof campus.floors === 'undefined') {
         this.hideTab('floors');
+        this.showTab('cathedra');
         return;
       }
 
@@ -92,9 +110,9 @@
     fillCathedraTemplate(campus) {
       if (typeof campus.cathedra === 'undefined') {
         this.hideTab('cathedra');
+        this.showTab('deanery');
         return;
       }
-
       this.showTab('cathedra');
       let heading = document.createElement("h2");
       heading.className = "info-title cathedras__title title title--h3";
@@ -114,8 +132,17 @@
         this.hideTab('deanery');
         return;
       }
+      if (typeof campus.floors === 'undefined') {
+        console.log(`und`);
+        if (typeof campus.cathedra === 'undefined') {
+          this.showTab('deanery');
+        } else {
+          this.showTab('cathedra');
+        }
+      } else {
+        this.showTab('floors');
+      }
 
-      this.showTab('deanery');
       let heading = document.createElement("h2");
       heading.className = "info-title deaneries__title title title--h3";
       heading.textContent = "Деканаты";
