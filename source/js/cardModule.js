@@ -39,8 +39,14 @@
       } else {
         posX = domEl.left + domEl.width;
       }
+      var scrollHeight = Math.max(
+        document.body.scrollHeight, document.documentElement.scrollHeight,
+        document.body.offsetHeight, document.documentElement.offsetHeight,
+        document.body.clientHeight, document.documentElement.clientHeight
+      );
       if (domEl.top + domEl.height / 3 * 2 + this.popup.clientHeight > document.documentElement.clientHeight) {
-        posY = domEl.top + domEl.height / 3 * 2 - this.popup.clientHeight;
+        console.log(`much more`)
+        posY = document.documentElement.clientHeight + window.pageYOffset - this.popup.clientHeight;
       } else {
         posY = domEl.top + domEl.height / 3 * 2;
       }
@@ -128,10 +134,6 @@
 
 
     fillDeaneryTemplate(campus) {
-      if (typeof campus.deanery === 'undefined') {
-        this.hideTab('deanery');
-        return;
-      }
       if (typeof campus.floors === 'undefined') {
         console.log(`und`);
         if (typeof campus.cathedra === 'undefined') {
@@ -141,6 +143,10 @@
         }
       } else {
         this.showTab('floors');
+      }
+      if (typeof campus.deanery === 'undefined') {
+        this.hideTab('deanery');
+        return;
       }
 
       let heading = document.createElement("h2");
