@@ -24,9 +24,11 @@
 
       campusNumber--;
 
-      this.fillFloorTemplate(window.dataModule.campuses[campusNumber]);
-      this.fillCathedraTemplate(window.dataModule.campuses[campusNumber]);
-      this.fillDeaneryTemplate(window.dataModule.campuses[campusNumber]);
+      let campus = window.dataModule.campuses[campusNumber];
+
+      this.fillFloorTemplate(campus);
+      this.fillCathedraTemplate(campus);
+      this.fillDeaneryTemplate(campus);
 
       this.popup.classList.remove(`popup--hidden`);
 
@@ -50,7 +52,25 @@
     },
 
 
+    toggleTab(type, status) {
+      this.popup.querySelector(`a.nav-link[href="#${type}"]`).hidden = status;
+    },
+
+    hideTab(type, status) {
+      this.toggleTab(type, true);
+    },
+
+    showTab(type, status) {
+      this.toggleTab(type, false);
+    },
+
     fillFloorTemplate(campus) {
+      if (typeof campus.floors === 'undefined') {
+        this.hideTab('floors');
+        return;
+      }
+
+      this.showTab('floors');
       let heading = document.createElement("h2");
       heading.className = "info-title floors__title title title--h3";
       heading.textContent = "Этажи";
@@ -69,8 +89,13 @@
       })
     },
 
-
     fillCathedraTemplate(campus) {
+      if (typeof campus.cathedra === 'undefined') {
+        this.hideTab('cathedra');
+        return;
+      }
+
+      this.showTab('cathedra');
       let heading = document.createElement("h2");
       heading.className = "info-title cathedras__title title title--h3";
       heading.textContent = "Кафедры";
@@ -85,6 +110,12 @@
 
 
     fillDeaneryTemplate(campus) {
+      if (typeof campus.deanery === 'undefined') {
+        this.hideTab('deanery');
+        return;
+      }
+
+      this.showTab('deanery');
       let heading = document.createElement("h2");
       heading.className = "info-title deaneries__title title title--h3";
       heading.textContent = "Деканаты";
@@ -94,7 +125,7 @@
       deaneryFragment.querySelector(`.deanery-title`).textContent = campus.deanery.name;
       deaneryFragment.querySelector(`.deanery-floor`).textContent = `Кафедра находится на ${window.utilModule.getThTranslate(campus.deanery.floor).toLowerCase()} этаже`;
 
-      campus.deanery.rooms.forEach(function (room) {
+      (typeof campus.deanery !== 'undefined') && campus.deanery.rooms.forEach(function (room) {
         let roomFragment = document.createElement(`li`);
         roomFragment.className = `deanery__rooms-list-item`;
         roomFragment.textContent = `${room}`;

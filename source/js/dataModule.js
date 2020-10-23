@@ -35,6 +35,19 @@
             rooms: [301, 302, 329]
           }
         };
+
+        if (Math.random()>0.5) {
+          delete campus.cathedra;
+        }
+
+        if (Math.random()>0.5) {
+          delete campus.deanery;
+        }
+
+        if (Math.random()>0.5) {
+          delete campus.floors;
+        }
+
         this.campuses.push(campus);
       }
     }
