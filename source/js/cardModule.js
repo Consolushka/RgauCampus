@@ -24,9 +24,11 @@
 
       campusNumber--;
 
-      this.fillFloorTemplate(window.dataModule.campuses[campusNumber]);
-      this.fillCathedraTemplate(window.dataModule.campuses[campusNumber]);
-      this.fillDeaneryTemplate(window.dataModule.campuses[campusNumber]);
+      let campus = window.dataModule.campuses[campusNumber]
+
+      this.fillFloorTemplate(campus);
+      this.fillCathedraTemplate(campus);
+      this.fillDeaneryTemplate(campus);
 
       this.popup.classList.remove(`popup--hidden`);
 
