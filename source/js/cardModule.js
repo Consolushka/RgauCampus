@@ -1,5 +1,9 @@
 'use strict';
 
+//: TODO need to select better name of variables (CAMPUS IS NOT CAMPUS, IS BUILDING)
+//: TODO create better structure of this file. Separate functions
+//: TODO Maybe create classes for entities (cath, facs)
+
 (function () {
   const FLOOR_TEMPLATE = document.querySelector(`#floorTempl`).content.querySelector(`.floor`);
   const ROOM_TEMPLATE = document.querySelector(`#roomTempl`).content.querySelector(`.floor__room`);
@@ -83,9 +87,9 @@
         cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra;
         campus.cath[cathedra].forEach((room)=>{
           let roomFragment = document.createElement(`li`);
-          roomFragment.className = `deanery__rooms-list-item`;
+          roomFragment.className = `structure__rooms-list-item`;
           roomFragment.textContent = `${room}`;
-          cathedraFragment.querySelector(`.cathedra__rooms-list`).appendChild(roomFragment);
+          cathedraFragment.querySelector(`.structure__rooms-list`).appendChild(roomFragment);
         })
         CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, cathedraFragment.outerHTML);
       })
@@ -103,9 +107,9 @@
         deaneryFragment.querySelector(`.deanery-title`).textContent = fac;
         campus.facs[fac].forEach((room)=>{
           let roomFragment = document.createElement(`li`);
-          roomFragment.className = `deanery__rooms-list-item`;
+          roomFragment.className = `structure__rooms-list-item`;
           roomFragment.textContent = `${room}`;
-          deaneryFragment.querySelector(`.deanery__rooms-list`).appendChild(roomFragment);
+          deaneryFragment.querySelector(`.structure__rooms-list`).appendChild(roomFragment);
         })
         DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, deaneryFragment.outerHTML);
       })
