@@ -22,13 +22,12 @@
       this.popup.querySelector(`.info__cathedras`).innerHTML = ``;
       this.popup.querySelector(`.info__deaneries`).innerHTML = ``;
 
-      campusNumber--;
+      let building = window.dataModule.campuses[campusNumber];
+      console.log(building);
 
-      let campus = window.dataModule.campuses[campusNumber]
-
-      this.fillFloorTemplate(campus);
-      this.fillCathedraTemplate(campus);
-      this.fillDeaneryTemplate(campus);
+      this.fillFloorTemplate(building);
+      this.fillCathedraTemplate(building);
+      this.fillDeaneryTemplate(building);
 
       this.popup.classList.remove(`popup--hidden`);
 
@@ -58,8 +57,9 @@
       heading.textContent = "Этажи";
       FLOOR_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      campus.floors.forEach(function (floor, i) {
+      Object.keys(campus.flrs).forEach(function (floor, i) {
         let floorFragment = FLOOR_TEMPLATE.cloneNode(true);
+        console.log(i);
         floorFragment.querySelector(`.floor-title`).textContent = `${window.utilModule.getSimpleTranslate(i)} Этаж`;
         Object.keys(floor).forEach(function (room) {
           let roomFragment = ROOM_TEMPLATE.cloneNode(true);
@@ -78,9 +78,15 @@
       heading.textContent = "Кафедры";
       CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      campus.cathedra.forEach(function (cathedra) {
+      Object.keys(campus.cath).forEach(function (cathedra) {
         let cathedraFragment = CATHEDRA_TEMPLATE.cloneNode(true);
-        cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra.name;
+        cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra;
+        campus.cath[cathedra].forEach((room)=>{
+          let roomFragment = document.createElement(`li`);
+          roomFragment.className = `deanery__rooms-list-item`;
+          roomFragment.textContent = `${room}`;
+          cathedraFragment.querySelector(`.cathedra__rooms-list`).appendChild(roomFragment);
+        })
         CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, cathedraFragment.outerHTML);
       })
     },
@@ -92,17 +98,17 @@
       heading.textContent = "Деканаты";
       DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      let deaneryFragment = DEANERY_TEMPLATE.cloneNode(true);
-      deaneryFragment.querySelector(`.deanery-title`).textContent = campus.deanery.name;
-      deaneryFragment.querySelector(`.deanery-floor`).textContent = `Кафедра находится на ${window.utilModule.getThTranslate(campus.deanery.floor).toLowerCase()} этаже`;
-
-      campus.deanery.rooms.forEach(function (room) {
-        let roomFragment = document.createElement(`li`);
-        roomFragment.className = `deanery__rooms-list-item`;
-        roomFragment.textContent = `${room}`;
-        deaneryFragment.querySelector(`.deanery__rooms-list`).appendChild(roomFragment);
+      Object.keys(campus.facs).forEach((fac)=>{
+        let deaneryFragment = DEANERY_TEMPLATE.cloneNode(true);
+        deaneryFragment.querySelector(`.deanery-title`).textContent = fac;
+        campus.facs[fac].forEach((room)=>{
+          let roomFragment = document.createElement(`li`);
+          roomFragment.className = `deanery__rooms-list-item`;
+          roomFragment.textContent = `${room}`;
+          deaneryFragment.querySelector(`.deanery__rooms-list`).appendChild(roomFragment);
+        })
+        DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, deaneryFragment.outerHTML);
       })
-      DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, deaneryFragment.outerHTML);
     }
   };
 })();

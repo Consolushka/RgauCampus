@@ -44,8 +44,7 @@
       rawFile.open("GET", file, true);
       rawFile.onreadystatechange = function() {
         if (rawFile.readyState === 4 && rawFile.status == "200") {
-          this.campuses = JSON.parse(rawFile.responseText);
-          console.log(this.campuses);
+          window.dataModule.campuses = JSON.parse(rawFile.responseText);
         }
       }
       rawFile.send(null);
