@@ -3751,33 +3751,33 @@ vLvHEf/Z
 </main>
 
 <section class="popup popup--hidden info js-popup">
-  <button class="btn popup-btn">
+  <button class="btn popup-btn js-popup-close">
     <svg width="16" height="16">
       <use xlink:href="img/sprite.svg#icon-close"></use>
     </svg>
     <span class="visually-hidden">Закрыть</span>
   </button>
-  <h2 class="info-name title title--h2">Учебный корпус № <span class="info__name-number"></span></h2>
+  <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> корпус № <span class="info__name-number"></span></h2>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active info__tabs-link" data-toggle="tab" href="#floors">Этажи</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link info__tabs-link" data-toggle="tab" href="#cathedra">Кафедры</a>
+      <a class="nav-link info__tabs-link" data-toggle="tab" href="#cathedra">Факультеты</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link info__tabs-link" data-toggle="tab" href="#deanery">Деканаты</a>
+      <a class="nav-link info__tabs-link" data-toggle="tab" href="#facs">Кафедры</a>
     </li>
   </ul>
   <div class="tab-content">
     <div id="floors" class="container tab-pane active"><br>
-      <article class="js-floors info__floors"></article>
+      <article class="js-floors"></article>
     </div>
     <div id="cathedra" class="container tab-pane fade"><br>
-      <article class="js-cathedra info__cathedras"></article>
+      <article class="js-facs"></article>
     </div>
-    <div id="deanery" class="container tab-pane fade"><br>
-      <article class="js-deanery info__deaneries"></article>
+    <div id="facs" class="container tab-pane fade"><br>
+      <article class="js-cathedra"></article>
     </div>
   </div>
 </section>
@@ -3803,11 +3803,10 @@ vLvHEf/Z
   </div>
 </template>
 
-<template id="deaneryTempl">
-  <div class="info__deanerys__item deanery info-separator">
-    <h3 class="deanery-title title title--h4"></h3>
-    <p class="deanery-floor"></p>
-    <ul class="deanery__rooms-list structure__rooms-list">
+<template id="facTempl">
+  <div class="info__facs__item fac info-separator">
+    <h3 class="fac-title title title--h4"></h3>
+    <ul class="fac__rooms-list structure__rooms-list">
     </ul>
   </div>
 </template>

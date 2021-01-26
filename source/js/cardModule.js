@@ -1,43 +1,42 @@
 'use strict';
 
 //: TODO need to select better name of variables (CAMPUS IS NOT CAMPUS, IS BUILDING)
-//: TODO Maybe create classes for entities (cath, facs)
 
 (function () {
   const FLOOR_TEMPLATE = document.querySelector(`#floorTempl`).content.querySelector(`.floor`);
   const ROOM_TEMPLATE = document.querySelector(`#roomTempl`).content.querySelector(`.floor__room`);
-  const FLOOR_CONTAINER = document.querySelector(`.js-floors`);
   const CATHEDRA_TEMPLATE = document.querySelector(`#cathedraTempl`).content.querySelector(`.cathedra`);
-  const DEANERY_TEMPLATE = document.querySelector(`#deaneryTempl`).content.querySelector(`.deanery`);
+  const FACS_TEMPLATE = document.querySelector(`#facTempl`).content.querySelector(`.fac`);
+  const FLOOR_CONTAINER = document.querySelector(`.js-floors`);
   const CATHEDRA_CONTAINER = document.querySelector(`.js-cathedra`);
-  const DEANERY_CONTAINER = document.querySelector(`.js-deanery`);
+  const FACS_CONTAINER = document.querySelector(`.js-facs`);
 
 
   window.cardModule = {
-    popup: document.querySelector(`.js-popup`),
+    popupObject: document.querySelector(`.js-popup`),
     buildingObject: null,
     buildingRect: null,
     buildingData: null,
 
     show(object) {
       this.buildingObject = object;
-
       this.resetPopup();
 
       this.fillBuildingStructure();
 
-      this.popup.classList.remove(`popup--hidden`);
-
+      this.popupObject.classList.remove(`popup--hidden`);
       this.locatePopup();
+
+      this.listenClosePopup();
     },
 
     resetPopup() {
       this.buildingRect = this.buildingObject.getBoundingClientRect();
       this.buildingData = window.dataModule.campuses[this.buildingObject.dataset.number];
       console.log(this.buildingData);
-      this.popup.querySelector(`.info__floors`).innerHTML = ``;
-      this.popup.querySelector(`.info__cathedras`).innerHTML = ``;
-      this.popup.querySelector(`.info__deaneries`).innerHTML = ``;
+      FLOOR_CONTAINER.innerHTML = ``;
+      CATHEDRA_CONTAINER.innerHTML = ``;
+      FACS_CONTAINER.innerHTML = ``;
     },
 
     locatePopup() {
@@ -47,23 +46,23 @@
       } else {
         posX = this.buildingRect.left + this.buildingRect.width;
       }
-      if (this.buildingRect.top + this.buildingRect.height / 3 * 2 + this.popup.clientHeight > document.documentElement.clientHeight) {
-        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 - this.popup.clientHeight;
+      if (this.buildingRect.top + this.buildingRect.height / 3 * 2 + this.popupObject.clientHeight > document.documentElement.clientHeight) {
+        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 - this.popupObject.clientHeight;
       } else {
         posY = this.buildingRect.top + this.buildingRect.height / 3 * 2;
       }
 
-      this.popup.setAttribute(`style`, `left: ${posX}px; top: ${posY}px`);
-      this.popup.querySelector(`.popup-btn`).addEventListener(`click`, function () {
-        window.cardModule.popup.classList.add(`popup--hidden`);
-      })
+      this.popupObject.setAttribute(`style`, `left: ${posX}px; top: ${posY}px`);
+
     },
 
     fillBuildingStructure() {
-      this.popup.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
+      this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
+      let purpose = String(this.buildingData.purpose)[0].toUpperCase()+String(this.buildingData.purpose).slice(1);
+      this.popupObject.querySelector(`.js-popup-purpose`).textContent = purpose;
       this.fillFloorTemplate();
       this.fillCathedraTemplate();
-      this.fillDeaneryTemplate();
+      this.fillFacsTemplate();
     },
 
 
@@ -75,7 +74,6 @@
 
       Object.keys(this.buildingData.flrs).forEach(function (floor, i) {
         let floorFragment = FLOOR_TEMPLATE.cloneNode(true);
-        console.log(i);
         floorFragment.querySelector(`.floor-title`).textContent = `${window.utilModule.getSimpleTranslate(i)} Этаж`;
         Object.keys(floor).forEach(function (room) {
           let roomFragment = ROOM_TEMPLATE.cloneNode(true);
@@ -108,22 +106,28 @@
     },
 
 
-    fillDeaneryTemplate() {
+    fillFacsTemplate() {
       let heading = document.createElement("h2");
-      heading.className = "info-title deaneries__title title title--h3";
-      heading.textContent = "Деканаты";
-      DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
+      heading.className = "info-title fac__title title title--h3";
+      heading.textContent = "Факультеты и Институты";
+      FACS_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
       Object.keys(this.buildingData.facs).forEach((fac) => {
-        let deaneryFragment = DEANERY_TEMPLATE.cloneNode(true);
-        deaneryFragment.querySelector(`.deanery-title`).textContent = fac;
+        let facFragment = FACS_TEMPLATE.cloneNode(true);
+        facFragment.querySelector(`.fac-title`).textContent = fac;
         this.buildingData.facs[fac].forEach((room) => {
           let roomFragment = document.createElement(`li`);
           roomFragment.className = `structure__rooms-list-item`;
           roomFragment.textContent = `${room}`;
-          deaneryFragment.querySelector(`.structure__rooms-list`).appendChild(roomFragment);
+          facFragment.querySelector(`.structure__rooms-list`).appendChild(roomFragment);
         })
-        DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, deaneryFragment.outerHTML);
+        FACS_CONTAINER.insertAdjacentHTML(`beforeend`, facFragment.outerHTML);
+      })
+    },
+
+    listenClosePopup(){
+      this.popupObject.querySelector(`.js-popup-close`).addEventListener(`click`, ()=> {
+        this.popupObject.classList.add(`popup--hidden`);
       })
     }
   };
