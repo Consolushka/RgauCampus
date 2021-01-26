@@ -1,7 +1,6 @@
 'use strict';
 
 //: TODO need to select better name of variables (CAMPUS IS NOT CAMPUS, IS BUILDING)
-//: TODO create better structure of this file. Separate functions
 //: TODO Maybe create classes for entities (cath, facs)
 
 (function () {
@@ -15,37 +14,43 @@
 
 
   window.cardModule = {
-    popup: document.querySelector(`.info`),
-
+    popup: document.querySelector(`.js-popup`),
+    buildingObject: null,
+    buildingRect: null,
+    buildingData: null,
 
     show(object) {
-      let campusNumber = object.dataset.number;
+      this.buildingObject = object;
 
-      this.popup.querySelector(`.info__name-number`).textContent = `${campusNumber}`;
-      this.popup.querySelector(`.info__floors`).innerHTML = ``;
-      this.popup.querySelector(`.info__cathedras`).innerHTML = ``;
-      this.popup.querySelector(`.info__deaneries`).innerHTML = ``;
+      this.resetPopup();
 
-      let building = window.dataModule.campuses[campusNumber];
-      console.log(building);
-
-      this.fillFloorTemplate(building);
-      this.fillCathedraTemplate(building);
-      this.fillDeaneryTemplate(building);
+      this.fillBuildingStructure();
 
       this.popup.classList.remove(`popup--hidden`);
 
-      let domEl = object.getBoundingClientRect();
+      this.locatePopup();
+    },
+
+    resetPopup() {
+      this.buildingRect = this.buildingObject.getBoundingClientRect();
+      this.buildingData = window.dataModule.campuses[this.buildingObject.dataset.number];
+      console.log(this.buildingData);
+      this.popup.querySelector(`.info__floors`).innerHTML = ``;
+      this.popup.querySelector(`.info__cathedras`).innerHTML = ``;
+      this.popup.querySelector(`.info__deaneries`).innerHTML = ``;
+    },
+
+    locatePopup() {
       let posX, posY;
-      if (domEl.left + domEl.width > window.document.documentElement.clientWidth / 3 * 2) {
-        posX = domEl.left + domEl.width - window.document.documentElement.clientWidth / 3;
+      if (this.buildingRect.left + this.buildingRect.width > window.document.documentElement.clientWidth / 3 * 2) {
+        posX = this.buildingRect.left + this.buildingRect.width - window.document.documentElement.clientWidth / 3;
       } else {
-        posX = domEl.left + domEl.width;
+        posX = this.buildingRect.left + this.buildingRect.width;
       }
-      if (domEl.top + domEl.height / 3 * 2 + this.popup.clientHeight > document.documentElement.clientHeight) {
-        posY = domEl.top + domEl.height / 3 * 2 - this.popup.clientHeight;
+      if (this.buildingRect.top + this.buildingRect.height / 3 * 2 + this.popup.clientHeight > document.documentElement.clientHeight) {
+        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 - this.popup.clientHeight;
       } else {
-        posY = domEl.top + domEl.height / 3 * 2;
+        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2;
       }
 
       this.popup.setAttribute(`style`, `left: ${posX}px; top: ${posY}px`);
@@ -54,14 +59,21 @@
       })
     },
 
+    fillBuildingStructure() {
+      this.popup.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
+      this.fillFloorTemplate();
+      this.fillCathedraTemplate();
+      this.fillDeaneryTemplate();
+    },
 
-    fillFloorTemplate(campus) {
+
+    fillFloorTemplate() {
       let heading = document.createElement("h2");
       heading.className = "info-title floors__title title title--h3";
       heading.textContent = "Этажи";
       FLOOR_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(campus.flrs).forEach(function (floor, i) {
+      Object.keys(this.buildingData.flrs).forEach(function (floor, i) {
         let floorFragment = FLOOR_TEMPLATE.cloneNode(true);
         console.log(i);
         floorFragment.querySelector(`.floor-title`).textContent = `${window.utilModule.getSimpleTranslate(i)} Этаж`;
@@ -76,16 +88,16 @@
     },
 
 
-    fillCathedraTemplate(campus) {
+    fillCathedraTemplate() {
       let heading = document.createElement("h2");
       heading.className = "info-title cathedras__title title title--h3";
       heading.textContent = "Кафедры";
       CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(campus.cath).forEach(function (cathedra) {
+      Object.keys(this.buildingData.cath).forEach((cathedra) => {
         let cathedraFragment = CATHEDRA_TEMPLATE.cloneNode(true);
         cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra;
-        campus.cath[cathedra].forEach((room)=>{
+        this.buildingData.cath[cathedra].forEach((room) => {
           let roomFragment = document.createElement(`li`);
           roomFragment.className = `structure__rooms-list-item`;
           roomFragment.textContent = `${room}`;
@@ -96,16 +108,16 @@
     },
 
 
-    fillDeaneryTemplate(campus) {
+    fillDeaneryTemplate() {
       let heading = document.createElement("h2");
       heading.className = "info-title deaneries__title title title--h3";
       heading.textContent = "Деканаты";
       DEANERY_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(campus.facs).forEach((fac)=>{
+      Object.keys(this.buildingData.facs).forEach((fac) => {
         let deaneryFragment = DEANERY_TEMPLATE.cloneNode(true);
         deaneryFragment.querySelector(`.deanery-title`).textContent = fac;
-        campus.facs[fac].forEach((room)=>{
+        this.buildingData.facs[fac].forEach((room) => {
           let roomFragment = document.createElement(`li`);
           roomFragment.className = `structure__rooms-list-item`;
           roomFragment.textContent = `${room}`;
