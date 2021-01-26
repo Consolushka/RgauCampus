@@ -1,10 +1,7 @@
 'use strict';
 
-//: TODO need to select better name of variables (CAMPUS IS NOT CAMPUS, IS BUILDING)
-
 (function () {
   const FLOOR_TEMPLATE = document.querySelector(`#floorTempl`).content.querySelector(`.floor`);
-  const ROOM_TEMPLATE = document.querySelector(`#roomTempl`).content.querySelector(`.floor__room`);
   const CATHEDRA_TEMPLATE = document.querySelector(`#cathedraTempl`).content.querySelector(`.cathedra`);
   const FACS_TEMPLATE = document.querySelector(`#facTempl`).content.querySelector(`.fac`);
   const FLOOR_CONTAINER = document.querySelector(`.js-floors`);
@@ -72,14 +69,15 @@
       heading.textContent = "Этажи";
       FLOOR_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(this.buildingData.flrs).forEach(function (floor, i) {
+      Object.keys(this.buildingData.flrs).forEach( (floor, i)=> {
         let floorFragment = FLOOR_TEMPLATE.cloneNode(true);
         floorFragment.querySelector(`.floor-title`).textContent = `${window.utilModule.getSimpleTranslate(i)} Этаж`;
-        Object.keys(floor).forEach(function (room) {
-          let roomFragment = ROOM_TEMPLATE.cloneNode(true);
-          roomFragment.querySelector(`.floor__room-title`).textContent = room;
-          roomFragment.querySelector(`.floor__room-desc`).textContent = floor[room];
-          floorFragment.insertAdjacentHTML(`beforeend`, roomFragment.outerHTML);
+        this.buildingData.flrs[floor].forEach((room)=> {
+          let roomFragment = document.createElement(`li`);
+          roomFragment.className = `structure__rooms-list-item`;
+          roomFragment.textContent = Object.keys(room)[0];
+          roomFragment.setAttribute(`title`,`${room[Object.keys(room)[0]]}`);
+          floorFragment.querySelector(`.structure__rooms-list`).appendChild(roomFragment);
         })
         FLOOR_CONTAINER.insertAdjacentHTML(`beforeend`, floorFragment.outerHTML);
       })
