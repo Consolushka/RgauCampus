@@ -13,6 +13,11 @@
   color: #3a7746;
 }
 
+.info__tabs-content{
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
 .info-title {
   color: #3a7746;
 }
@@ -23,5 +28,32 @@
 
   &:not(:last-child) {
     border-bottom: 1px solid #3a7746;
+  }
+}
+
+.info__rooms-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.info__rooms-list-item {
+  display: block;
+  padding: 3px;
+  border: 1px solid #3a7746;
+  margin: 0;
+  margin-bottom: 5px;
+  margin-right: 10px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 }
