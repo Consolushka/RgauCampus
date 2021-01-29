@@ -17,6 +17,15 @@
       this.buildingData = data;
       this.popupObject = popup;
 
+      this.fillGeneralInfo();
+
+      this.fillFloorTemplate();
+      this.fillCathedraTemplate();
+      this.fillFacsTemplate();
+    },
+
+    fillGeneralInfo(){
+
       let purpose = String(this.buildingData.purpose)[0].toUpperCase() + String(this.buildingData.purpose).slice(1);
 
       this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
@@ -25,11 +34,8 @@
         this.popupObject.querySelector(`.js-popup-extra`).classList.remove("visually-hidden");
         this.popupObject.querySelector(`.js-popup-extra`).textContent = this.buildingData.extra;
       }
-
-      this.fillFloorTemplate();
-      this.fillCathedraTemplate();
-      this.fillFacsTemplate();
     },
+
 
     fillFloorTemplate() {
       let heading = document.createElement("h2");
@@ -43,6 +49,17 @@
         floorFragment = this.insertRoomsIntoContainer(this.buildingData.flrs[floor], floorFragment);
         FLOOR_CONTAINER.insertAdjacentHTML(`beforeend`, floorFragment.outerHTML);
       })
+    },
+
+    insertRoomsIntoContainer(data, container) {
+      data.forEach((room) => {
+        let roomFragment = document.createElement(`li`);
+        roomFragment.className = `info__rooms-list-item`;
+        roomFragment.textContent = Object.keys(room)[0];
+        roomFragment.setAttribute(`title`, `${room[Object.keys(room)[0]]}`);
+        container.querySelector(`.info__rooms-list`).appendChild(roomFragment);
+      });
+      return container;
     },
 
 
@@ -73,17 +90,6 @@
         facFragment = this.insertRoomsIntoContainer(this.buildingData.facs[fac], facFragment);
         FACS_CONTAINER.insertAdjacentHTML(`beforeend`, facFragment.outerHTML);
       })
-    },
-
-    insertRoomsIntoContainer(data, container) {
-      data.forEach((room) => {
-        let roomFragment = document.createElement(`li`);
-        roomFragment.className = `info__rooms-list-item`;
-        roomFragment.textContent = Object.keys(room)[0];
-        roomFragment.setAttribute(`title`, `${room[Object.keys(room)[0]]}`);
-        container.querySelector(`.info__rooms-list`).appendChild(roomFragment);
-      });
-      return container;
     }
   }
 })();
