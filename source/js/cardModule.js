@@ -14,6 +14,12 @@
 
     show(object) {
       this.buildingObject = object;
+      this.buildingRect = this.buildingObject.getBoundingClientRect();
+      window.dataModule.campuses.forEach((item)=>{
+        if(item.name===this.buildingObject.dataset.number){
+          this.buildingData = item;
+        }
+      })
       this.resetPopup();
 
       window.building.fillBuildingStructure(this.buildingData,this.popupObject);
@@ -24,8 +30,6 @@
     },
 
     resetPopup() {
-      this.buildingRect = this.buildingObject.getBoundingClientRect();
-      this.buildingData = window.dataModule.campuses[this.buildingObject.dataset.number];
       console.log(this.buildingData);
       this.popupObject.querySelector(`.js-popup-extra`).classList.add("visually-hidden");
       FLOOR_CONTAINER.innerHTML = ``;

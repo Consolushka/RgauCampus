@@ -3,12 +3,27 @@
 }
 
 .map-image__object {
-  cursor: pointer;
   transition-duration: 200ms;
+  fill: #3bd11d;
 
   &:hover {
     fill: darken(#3bd11d, 20%);
   }
+
+  &--extra{
+    fill: none;
+    stroke: #3bd11d;
+    stroke-width: 5px;
+
+    &:hover{
+      fill: none;
+      stroke: darken(#3bd11d, 20%);
+    }
+  }
+}
+
+.map-image__polygon{
+  opacity: 0;
 }
 
 .map-image{
