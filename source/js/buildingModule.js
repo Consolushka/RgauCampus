@@ -17,11 +17,26 @@
       this.buildingData = data;
       this.popupObject = popup;
 
+      this.resetPopup();
+
       this.fillGeneralInfo();
 
-      this.fillFloorTemplate();
-      this.fillCathedraTemplate();
-      this.fillFacsTemplate();
+      if(Object.keys(this.buildingData.flrs).length === 0){
+        this.showEmptyInfo();
+      }
+      else{
+        this.fillEntities();
+      }
+    },
+
+    resetPopup() {
+      FLOOR_CONTAINER.innerHTML = ``;
+      CATHEDRA_CONTAINER.innerHTML = ``;
+      FACS_CONTAINER.innerHTML = ``;
+
+      this.popupObject.querySelector(`.js-popup-extra`).classList.add("visually-hidden");
+      this.popupObject.querySelector(".nav-tabs").classList.remove("visually-hidden");
+      this.popupObject.querySelector(".js-popup-empty-building").classList.add("visually-hidden");
     },
 
     fillGeneralInfo(){
@@ -36,6 +51,16 @@
       }
     },
 
+    showEmptyInfo(){
+      this.popupObject.querySelector(".nav-tabs").classList.add("visually-hidden");
+      this.popupObject.querySelector(".js-popup-empty-building").classList.remove("visually-hidden");
+    },
+
+    fillEntities(){
+      this.fillFloorTemplate();
+      this.fillCathedraTemplate();
+      this.fillFacsTemplate();
+    },
 
     fillFloorTemplate() {
       let heading = document.createElement("h2");

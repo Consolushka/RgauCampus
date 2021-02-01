@@ -8,21 +8,42 @@
 
     showTitle(object){
       this.buildingObject = object;
-      this.getObjectData();
+      this.buildingRect = this.buildingObject.getBoundingClientRect();
 
-      this.fillData();
+      this.resetPopup();
+
+      this.checkBuildingNumber();
 
       this.popup.classList.remove(`popup--hidden`);
       this.locatePopup();
     },
 
+    resetPopup(){
+      this.popup.querySelector(`.js-popup-general-empty`).classList.add("visually-hidden");
+      this.popup.querySelector(`.js-popup-general-data`).classList.remove("visually-hidden");
+    },
+
+    checkBuildingNumber(){
+      if (this.buildingObject.dataset.number === "none"){
+        this.fillEmptyData();
+      }
+      else{
+        this.getObjectData();
+      }
+    },
+
     getObjectData(){
-      this.buildingRect = this.buildingObject.getBoundingClientRect();
       window.dataModule.campuses.forEach((item)=>{
         if(item.name===this.buildingObject.dataset.number){
           this.buildingData = item;
         }
       });
+      this.fillData();
+    },
+
+    fillEmptyData(){
+      this.popup.querySelector(`.js-popup-general-empty`).classList.remove("visually-hidden");
+      this.popup.querySelector(`.js-popup-general-data`).classList.add("visually-hidden");
     },
 
     fillData(){

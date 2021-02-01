@@ -4,7 +4,9 @@
     objects: document.querySelectorAll(".js-object"),
     addEvents() {
       this.objects.forEach((object) => {
-        this.onClick(object);
+        if(object.dataset.number !== "none"){
+          this.onClick(object);
+        }
         if(window.utilModule.windowWidth>=948){
           this.onHover(object);
         }

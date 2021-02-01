@@ -323,9 +323,10 @@
   </svg>
 </main>
 
-<p class="popup popup--hidden building-title js-popup-general">
-  <span class="building-title-purpose"></span> корпус № <span class="building-title-name"></span></h2>
-</p>
+<div class="popup popup--hidden building-title js-popup-general">
+  <p class="js-popup-general-data"><span class="building-title-purpose"></span> корпус № <span class="building-title-name"></span></p>
+  <p class="js-popup-general-empty visually-hidden">Информация отсутствует</p>
+</div>
 
 <section class="popup popup--hidden info js-popup-all">
   <button class="btn popup-btn js-popup-close">
@@ -337,6 +338,7 @@
   <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> корпус № <span
     class="info__name-number"></span></h2>
   <p class="js-popup-extra info-extra visually-hidden"></p>
+  <p class="js-popup-empty-building info-null visually-hidden">Информация отсутствует</p>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active info__tabs-link" data-toggle="tab" href="#floors">Этажи</a>

@@ -14,6 +14,10 @@ body {
   font-weight: normal;
 }
 
+.d-none{
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);

@@ -1,18 +1,12 @@
 'use strict';
 
 (function () {
-  const FLOOR_CONTAINER = document.querySelector(`.js-floors`);
-  const CATHEDRA_CONTAINER = document.querySelector(`.js-cathedra`);
-  const FACS_CONTAINER = document.querySelector(`.js-facs`);
-
-
   window.cardModule = {
     popupObject: document.querySelector(`.js-popup-all`),
 
     show(object) {
       this.object = object;
       this.getObjectData();
-      this.resetPopup();
 
       window.building.fillBuildingStructure(this.buildingData, this.popupObject);
 
@@ -31,13 +25,6 @@
           this.buildingData = item;
         }
       });
-    },
-
-    resetPopup() {
-      this.popupObject.querySelector(`.js-popup-extra`).classList.add("visually-hidden");
-      FLOOR_CONTAINER.innerHTML = ``;
-      CATHEDRA_CONTAINER.innerHTML = ``;
-      FACS_CONTAINER.innerHTML = ``;
     },
 
     locatePopup() {
