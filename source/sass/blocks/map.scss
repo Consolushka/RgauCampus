@@ -1,5 +1,6 @@
 .map{
   width: 100%;
+  overflow: auto;
 }
 
 .map-image__object {
@@ -27,6 +28,12 @@
 }
 
 .map-image{
-  width: 100%;
-  height: auto;
+  height: 100vh;
+}
+
+@media (min-width: 1200px){
+  .map-image{
+    width: 100%;
+    height: auto;
+  }
 }

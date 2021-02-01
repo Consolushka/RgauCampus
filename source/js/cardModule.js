@@ -17,7 +17,9 @@
       window.building.fillBuildingStructure(this.buildingData, this.popupObject);
 
       this.popupObject.classList.remove(`popup--hidden`);
-      this.locatePopup();
+      if(window.utilModule.windowWidth>=720){
+        this.locatePopup();
+      }
       this.listenClosePopup();
     },
 

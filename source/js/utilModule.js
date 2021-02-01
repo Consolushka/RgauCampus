@@ -24,6 +24,7 @@
         th: `Пятом`
       },
     },
+    windowWidth: document.documentElement.clientWidth,
     getSimpleTranslate(i) {
       return this.FLOOR_TRANSLATOR[i + 1].simple;
     },
