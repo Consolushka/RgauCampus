@@ -5,10 +5,45 @@
 
 .map-image__object {
   transition-duration: 200ms;
-  fill: #3bd11d;
 
-  &:hover {
-    fill: darken(#3bd11d, 20%);
+  &--learning{
+    fill: #3bd11d;
+
+    &:hover {
+      fill: darken(#3bd11d, 20%);
+    }
+  }
+
+  &--admin{
+    fill: #dfbd34;
+
+    &:hover {
+      fill: darken(#dfbd34, 20%);
+    }
+  }
+
+  &--sport{
+    fill: #0000f0;
+
+    &:hover{
+      fill: darken(#0000f0, 20%);
+    }
+  }
+
+  &--living{
+    fill: #e4660c;
+
+    &:hover{
+      fill: darken(#e4660c, 20%);
+    }
+  }
+
+  &--culture{
+    fill: #834011;
+
+    &:hover{
+      fill: darken(#834011, 20%);
+    }
   }
 
   &--extra{

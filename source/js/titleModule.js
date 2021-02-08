@@ -15,12 +15,16 @@
       this.checkBuildingNumber();
 
       this.popup.classList.remove(`popup--hidden`);
+      this.popup.classList.add(`building-title--${this.buildingObject.dataset.type}`);
       this.locatePopup();
     },
 
     resetPopup(){
       this.popup.querySelector(`.js-popup-general-empty`).classList.add("visually-hidden");
       this.popup.querySelector(`.js-popup-general-data`).classList.remove("visually-hidden");
+      Object.keys(window.utilModule.BUILDING_PURPOSE_TRANSLATOR).forEach((type)=>{
+        this.popup.classList.remove(`building-title--${type}`);
+      })
     },
 
     checkBuildingNumber(){
@@ -47,8 +51,13 @@
     },
 
     fillData(){
-      this.popup.querySelector(`.building-title-purpose`).textContent = String(this.buildingData.purpose)[0].toUpperCase() + String(this.buildingData.purpose).slice(1);
-      this.popup.querySelector(`.building-title-name`).textContent = this.buildingData.name;
+      this.popup.querySelector(`.building-title-purpose`).textContent = window.utilModule.BUILDING_PURPOSE_TRANSLATOR[this.buildingObject.dataset.type];
+      let name = "";
+      if (this.buildingObject.dataset.type!=="culture" && this.buildingObject.dataset.type!=="sport"){
+        name = "№ "
+      }
+      name +=this.buildingObject.dataset.number;
+      this.popup.querySelector(`.building-title-name`).textContent = name;
     },
 
     closeTitle(){

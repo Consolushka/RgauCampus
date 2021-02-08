@@ -1,10 +1,29 @@
 .building-title{
   padding: 7px;
   border-radius: 4px;
-  background: #3a7746;
   color: #ffffff;
 
   p{
     margin-bottom: 0;
+  }
+
+  &--learning{
+    background: #3a7746;
+  }
+
+  &--admin{
+    background: #dfbd34;
+  }
+
+  &--sport{
+    background: #0000f0;
+  }
+
+  &--living{
+    background: #e4660c;
+  }
+
+  &--culture{
+    background: #834011;
   }
 }
