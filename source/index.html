@@ -487,7 +487,8 @@
 </main>
 
 <div class="popup popup--hidden building-title js-popup-general">
-  <p class="js-popup-general-data"><span class="building-title-purpose"></span> корпус <span class="building-title-name"></span></p>
+  <p class="js-popup-general-data"><span class="building-title-purpose"></span> <span
+    class="building-title-name"></span></p>
   <p class="js-popup-general-empty visually-hidden">Информация отсутствует</p>
 </div>
 
@@ -498,8 +499,9 @@
     </svg>
     <span class="visually-hidden">Закрыть</span>
   </button>
-  <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> корпус № <span
+  <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> корпус <span
     class="info__name-number"></span></h2>
+  <p class="js-popup-address info-extra"></p>
   <p class="js-popup-extra info-extra visually-hidden"></p>
   <p class="js-popup-empty-building info-null visually-hidden">Информация отсутствует</p>
   <ul class="nav nav-tabs">
@@ -551,6 +553,7 @@
 </template>
 
 <script src="js/buildings-data.json"></script>
+<script src="js/living-data.json"></script>
 <script src="js/utilModule.js"></script>
 <script src="js/objectModule.js"></script>
 <script src="js/dataModule.js"></script>

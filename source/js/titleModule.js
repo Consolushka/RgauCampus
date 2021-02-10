@@ -37,8 +37,8 @@
     },
 
     getObjectData(){
-      window.dataModule.campuses.forEach((item)=>{
-        if(item.name===this.buildingObject.dataset.number){
+      window.dataModule.buildings.forEach((item) => {
+        if (item.name === this.buildingObject.dataset.number) {
           this.buildingData = item;
         }
       });

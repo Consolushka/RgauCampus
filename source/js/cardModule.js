@@ -8,10 +8,19 @@
       this.object = object;
       this.getObjectData();
 
+      switch (this.object.dataset.type) {
+        case "learning":
+          this.getLearningBuildingData();
+          break;
+        default:
+          this.getOtherBuildingData();
+          break;
+      }
+
       window.building.fillBuildingStructure(this.buildingData, this.popupObject);
 
       this.popupObject.classList.remove(`popup--hidden`);
-      if(window.utilModule.windowWidth>=720){
+      if (window.utilModule.windowWidth >= 720) {
         this.locatePopup();
       }
       this.listenClosePopup();
@@ -20,7 +29,18 @@
     getObjectData() {
       this.buildingObject = this.object;
       this.buildingRect = this.buildingObject.getBoundingClientRect();
-      window.dataModule.campuses.forEach((item) => {
+    },
+
+    getLearningBuildingData() {
+      window.dataModule.buildings.forEach((item) => {
+        if (item.name === this.buildingObject.dataset.number) {
+          this.buildingData = item;
+        }
+      });
+    },
+
+    getOtherBuildingData() {
+      window.dataModule.other[0][this.buildingObject.dataset.type].forEach((item) => {
         if (item.name === this.buildingObject.dataset.number) {
           this.buildingData = item;
         }

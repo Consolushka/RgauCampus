@@ -14,6 +14,7 @@
     popupObject: null,
 
     fillBuildingStructure(data,popup) {
+      console.log(data);
       this.buildingData = data;
       this.popupObject = popup;
 
@@ -21,10 +22,9 @@
 
       this.fillGeneralInfo();
 
-      if(Object.keys(this.buildingData.flrs).length === 0){
+      if (!this.buildingData.flrs || Object.keys(this.buildingData.flrs).length === 0) {
         this.showEmptyInfo();
-      }
-      else{
+      } else {
         this.fillEntities();
       }
     },
@@ -45,6 +45,7 @@
 
       this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
       this.popupObject.querySelector(`.js-popup-purpose`).textContent = purpose;
+      this.popupObject.querySelector(`.js-popup-address`).textContent = `${this.buildingData.address}`;
       if (this.buildingData.extra) {
         this.popupObject.querySelector(`.js-popup-extra`).classList.remove("visually-hidden");
         this.popupObject.querySelector(`.js-popup-extra`).textContent = this.buildingData.extra;
