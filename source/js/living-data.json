@@ -3,74 +3,73 @@
     "path": "path",
     "living": [
       {
-        "purpose": "жилой",
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "0",
         "name": "1"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "1",
         "name": "2"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "2",
         "name": "3"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "3",
         "name": "4"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "4",
         "name": "5"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "5",
         "name": "6"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "6",
         "name": "7"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "7",
         "name": "8"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "8",
         "name": "9"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "9",
         "name": "10"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "10",
         "name": "11"
       },
       {
-        "purpose": "жилой",
+        "purpose": "living",
         "address": "Лиственничная аллея",
         "id": "11",
         "name": "13"
@@ -78,25 +77,25 @@
     ],
     "sport": [
       {
-        "purpose": "спортивный",
+        "purpose": "sport",
         "address": "Лиственничная аллея",
         "id": "0",
         "name": "СК"
       },
       {
-        "purpose": "спортивный",
+        "purpose": "sport",
         "address": "Лиственничная аллея",
         "id": "1",
         "name": "Стадион"
       },
       {
-        "purpose": "спортивный",
+        "purpose": "sport",
         "address": "Лиственничная аллея",
         "id": "2",
         "name": "Теннисный корт"
       },
       {
-        "purpose": "спортивный",
+        "purpose": "sport",
         "address": "Лиственничная аллея",
         "id": "3",
         "name": "Конный манеж"
@@ -104,25 +103,25 @@
     ],
     "admin": [
       {
-        "purpose": "административный",
+        "purpose": "admin",
         "address": "Лиственничная аллея",
         "id": "0",
         "name": "10"
       },
       {
-        "purpose": "административный",
+        "purpose": "admin",
         "address": "Лиственничная аллея",
         "id": "1",
         "name": "8"
       },
       {
-        "purpose": "административный",
+        "purpose": "admin",
         "address": "Лиственничная аллея",
         "id": "2",
         "name": "20"
       },
       {
-        "purpose": "административный",
+        "purpose": "admin",
         "address": "Лиственничная аллея",
         "id": "3",
         "name": "Приемная комиссия"
@@ -130,19 +129,19 @@
     ],
     "culture": [
       {
-        "purpose": "культурный",
+        "purpose": "culture",
         "address": "Лиственничная аллея",
         "id": "0",
         "name": "Библиотека"
       },
       {
-        "purpose": "культурный",
+        "purpose": "culture",
         "address": "Лиственничная аллея",
         "id": "1",
         "name": "Музей Истории академии"
       },
       {
-        "purpose": "культурный",
+        "purpose": "culture",
         "address": "Лиственничная аллея",
         "id": "2",
         "name": "Дом культуры"

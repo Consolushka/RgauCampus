@@ -46,15 +46,24 @@
     }
   }
 
-  &--extra{
+  &--extra {
     fill: none;
     stroke: #3bd11d;
     stroke-width: 5px;
 
-    &:hover{
+    &:hover {
       fill: none;
       stroke: darken(#3bd11d, 20%);
     }
+  }
+
+  &--neutral {
+    fill: #827f84 !important;
+  }
+
+  &--neutral-extra {
+    fill: none !important;
+    stroke: #827f84 !important;
   }
 }
 

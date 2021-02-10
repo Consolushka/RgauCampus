@@ -14,7 +14,6 @@
     popupObject: null,
 
     fillBuildingStructure(data,popup) {
-      console.log(data);
       this.buildingData = data;
       this.popupObject = popup;
 
@@ -41,10 +40,8 @@
 
     fillGeneralInfo(){
 
-      let purpose = String(this.buildingData.purpose)[0].toUpperCase() + String(this.buildingData.purpose).slice(1);
-
       this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
-      this.popupObject.querySelector(`.js-popup-purpose`).textContent = purpose;
+      this.popupObject.querySelector(`.js-popup-purpose`).textContent = window.utilModule.BUILDING_PURPOSE_TRANSLATOR[this.buildingData.purpose];
       this.popupObject.querySelector(`.js-popup-address`).textContent = `${this.buildingData.address}`;
       if (this.buildingData.extra) {
         this.popupObject.querySelector(`.js-popup-extra`).classList.remove("visually-hidden");

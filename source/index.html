@@ -372,7 +372,7 @@
       <path
         class="map-image__object map-image__object--sport js-object"
         d="m 739.53885,371.12472 16.26353,-5.87294 0.90353,3.84 2.93647,-0.90353 6.09882,16.71529 -15.81176,5.64706 -1.80706,-3.84 -2.71059,1.12941 z"
-        id="path920" data-type="sport" data-number="Тенисный корт"/>
+        id="path920" data-type="sport" data-number="Теннисный корт"/>
       <path
         style="fill:#fffffa;fill-opacity:1;stroke:#feffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
         d="m 869.4212,343.34119 6.43765,-2.59765 2.59765,6.88941 -6.32471,2.03294 z"
@@ -486,6 +486,36 @@
   </svg>
 </main>
 
+<section class="legend">
+  <p class="legend-title">Выберите нужную вам категорию</p>
+  <ul class="legend__type-list">
+    <li class="legend__type-list-item building-type">
+      <button class="btn building-type-color building-type-color--learning js-legend-type"
+              data-type="learning"></button>
+      <span class="type-desc"> - Учебные корпуса</span>
+    </li>
+    <li class="legend__type-list-item building-type">
+      <button class="btn building-type-color building-type-color--admin js-legend-type" data-type="admin"></button>
+      <span class="type-desc"> - Административные корпуса</span>
+    </li>
+    <li class="legend__type-list-item building-type">
+      <button class="btn building-type-color building-type-color--sport js-legend-type" data-type="sport"></button>
+      <span class="type-desc"> - Спортивные комплексы</span>
+    </li>
+    <li class="legend__type-list-item building-type">
+      <button class="btn building-type-color building-type-color--leaving js-legend-type" data-type="living"></button>
+      <span class="type-desc"> - Общежития</span>
+    </li>
+    <li class="legend__type-list-item building-type">
+      <button class="btn building-type-color building-type-color--culture js-legend-type" data-type="culture"></button>
+      <span class="type-desc"> - Культурные здания</span>
+    </li>
+    <li class="legend__type-list-item building-type">
+      <button class="btn btn--base js-legend-type" data-type="all">Отобразить все</button>
+    </li>
+  </ul>
+</section>
+
 <div class="popup popup--hidden building-title js-popup-general">
   <p class="js-popup-general-data"><span class="building-title-purpose"></span> <span
     class="building-title-name"></span></p>
@@ -499,8 +529,8 @@
     </svg>
     <span class="visually-hidden">Закрыть</span>
   </button>
-  <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> корпус <span
-    class="info__name-number"></span></h2>
+  <h2 class="info-name title title--h2"><span class="js-popup-purpose"></span> <span class="info__name-number"></span>
+  </h2>
   <p class="js-popup-address info-extra"></p>
   <p class="js-popup-extra info-extra visually-hidden"></p>
   <p class="js-popup-empty-building info-null visually-hidden">Информация отсутствует</p>
@@ -556,6 +586,7 @@
 <script src="js/living-data.json"></script>
 <script src="js/utilModule.js"></script>
 <script src="js/objectModule.js"></script>
+<script src="js/legendModule.js"></script>
 <script src="js/dataModule.js"></script>
 <script src="js/buildingModule.js"></script>
 <script src="js/titleModule.js"></script>

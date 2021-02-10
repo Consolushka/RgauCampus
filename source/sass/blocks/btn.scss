@@ -1,4 +1,8 @@
 .btn {
   background: none;
   border: none;
+
+  &--base {
+    border: 1px solid #828282;
+  }
 }

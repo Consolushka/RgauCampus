@@ -1,0 +1,57 @@
+.building-type-color {
+  width: 30px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+
+  &--learning {
+    background-color: #3bd11d;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken(#3bd11d, 20%);
+    }
+  }
+
+  &--admin {
+    background-color: #dfbd34;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken(#dfbd34, 20%);
+    }
+  }
+
+  &--sport {
+    background-color: #0000f0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken(#0000f0, 20%);
+    }
+  }
+
+  &--leaving {
+    background-color: #e4660c;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken(#e4660c, 20%);
+    }
+  }
+
+  &--culture {
+    background-color: #834011;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken(#834011, 20%);
+    }
+  }
+}

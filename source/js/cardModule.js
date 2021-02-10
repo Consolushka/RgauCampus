@@ -33,7 +33,7 @@
 
     getLearningBuildingData() {
       window.dataModule.buildings.forEach((item) => {
-        if (item.name === this.buildingObject.dataset.number) {
+        if (item.name.toLowerCase() === this.buildingObject.dataset.number.toLowerCase()) {
           this.buildingData = item;
         }
       });
@@ -41,7 +41,7 @@
 
     getOtherBuildingData() {
       window.dataModule.other[0][this.buildingObject.dataset.type].forEach((item) => {
-        if (item.name === this.buildingObject.dataset.number) {
+        if (item.name.toLowerCase() === this.buildingObject.dataset.number.toLowerCase()) {
           this.buildingData = item;
         }
       });

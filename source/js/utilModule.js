@@ -25,11 +25,11 @@
       },
     },
     BUILDING_PURPOSE_TRANSLATOR:{
-      learning: "Учебный",
-      admin: "Административный",
-      sport: "Спортивный",
-      living: "Жилой",
-      culture: "Культурный",
+      learning: "Учебный корпус №",
+      admin: "Административное здание",
+      sport: "",
+      living: "Общежитие №",
+      culture: ""
     },
     windowWidth: document.documentElement.clientWidth,
     getSimpleTranslate(i) {
