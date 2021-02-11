@@ -1,9 +1,9 @@
 (function () {
   window.legendModule = {
     objects: document.querySelectorAll(".js-object"),
-    showOnlyCurrentType(type) {
-      this.objects.forEach((object) => {
-        if (object.dataset.type !== type.dataset.type && type.dataset.type !== "all") {
+    showOnlyCurrentType(e) {
+      window.legendModule.objects.forEach((object) => {
+        if (object.dataset.type !== e.target.dataset.type && e.target.dataset.type !== "all") {
           object.classList.remove("js-object");
           object.classList.add("map-image__object--neutral");
           if (object.classList.contains("map-image__object--extra")) {
@@ -16,7 +16,7 @@
         }
       });
       window.objectsModule.removeEvents();
-      window.objectsModule.addEvents();
+      window.objectsModule.addEventsForObjects();
     }
   }
 })();

@@ -4,13 +4,13 @@
     objects: null,
     legendTypes: document.querySelectorAll(".js-legend-type"),
     addEvents() {
-      this.objects = document.querySelectorAll(".js-object");
-
       this.addEventsForObjects();
 
       this.addEventsForLegend();
     },
     addEventsForObjects() {
+      this.objects = document.querySelectorAll(".js-object");
+
       this.objects.forEach((object) => {
         if (object.dataset.number !== "none") {
           this.onClick(object);
@@ -42,9 +42,7 @@
       })
     },
     onTypeClick(type) {
-      type.addEventListener(`click`, () => {
-        window.legendModule.showOnlyCurrentType(type);
-      });
+      type.addEventListener(`click`, window.legendModule.showOnlyCurrentType);
     },
     removeEvents() {
       this.objects.forEach((object) => {
