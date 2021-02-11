@@ -8,22 +8,22 @@
   }
 
   &--learning{
-    background: #3a7746;
+    background: darken($learning-color, 20%);
   }
 
-  &--admin{
-    background: #dfbd34;
+  &--admin {
+    background: darken($admin-color, 20%);
   }
 
-  &--sport{
-    background: #0000f0;
+  &--sport {
+    background: darken($sport-color, 20%);
   }
 
-  &--living{
-    background: #e4660c;
+  &--living {
+    background: darken($living-color, 20%);
   }
 
-  &--culture{
-    background: #834011;
+  &--culture {
+    background: darken($culture-color, 20%);
   }
 }

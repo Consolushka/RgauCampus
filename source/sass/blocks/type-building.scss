@@ -6,52 +6,52 @@
   border: none;
 
   &--learning {
-    background-color: #3bd11d;
+    background-color: $learning-color;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 0 10px darken(#3bd11d, 20%);
+      box-shadow: 0 0 10px darken($learning-color, 20%);
     }
   }
 
   &--admin {
-    background-color: #dfbd34;
+    background-color: $admin-color;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 0 10px darken(#dfbd34, 20%);
+      box-shadow: 0 0 10px darken($admin-color, 20%);
     }
   }
 
   &--sport {
-    background-color: #0000f0;
+    background-color: $sport-color;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 0 10px darken(#0000f0, 20%);
+      box-shadow: 0 0 10px darken($sport-color, 20%);
     }
   }
 
   &--leaving {
-    background-color: #e4660c;
+    background-color: $living-color;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 0 10px darken(#e4660c, 20%);
+      box-shadow: 0 0 10px darken($living-color, 20%);
     }
   }
 
   &--culture {
-    background-color: #834011;
+    background-color: $culture-color;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 0 10px darken(#834011, 20%);
+      box-shadow: 0 0 10px darken($culture-color, 20%);
     }
   }
 }

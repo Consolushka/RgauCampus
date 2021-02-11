@@ -7,63 +7,63 @@
   transition-duration: 200ms;
 
   &--learning{
-    fill: #3bd11d;
+    fill: $learning-color;
 
     &:hover {
-      fill: darken(#3bd11d, 20%);
+      fill: darken($learning-color, 20%);
     }
   }
 
-  &--admin{
-    fill: #dfbd34;
+  &--admin {
+    fill: $admin-color;
 
     &:hover {
-      fill: darken(#dfbd34, 20%);
+      fill: darken($admin-color, 20%);
     }
   }
 
-  &--sport{
-    fill: #0000f0;
+  &--sport {
+    fill: $sport-color;
 
-    &:hover{
-      fill: darken(#0000f0, 20%);
+    &:hover {
+      fill: darken($sport-color, 20%);
     }
   }
 
-  &--living{
-    fill: #e4660c;
+  &--living {
+    fill: $living-color;
 
-    &:hover{
-      fill: darken(#e4660c, 20%);
+    &:hover {
+      fill: darken($living-color, 20%);
     }
   }
 
-  &--culture{
-    fill: #834011;
+  &--culture {
+    fill: $culture-color;
 
-    &:hover{
-      fill: darken(#834011, 20%);
+    &:hover {
+      fill: darken($culture-color, 20%);
     }
   }
 
   &--extra {
     fill: none;
-    stroke: #3bd11d;
+    stroke: $learning-color;
     stroke-width: 5px;
 
     &:hover {
       fill: none;
-      stroke: darken(#3bd11d, 20%);
+      stroke: darken($learning-color, 20%);
     }
   }
 
   &--neutral {
-    fill: #827f84 !important;
+    fill: $neutral-color !important;
   }
 
   &--neutral-extra {
     fill: none !important;
-    stroke: #827f84 !important;
+    stroke: $neutral-color !important;
   }
 }
 
