@@ -1,4 +1,30 @@
 .btn {
   background: none;
   border: none;
+
+  &--base {
+    border: 1px solid #828282;
+  }
+
+  &--menu {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background-color: #fffffa;
+    border: 1px solid #828282;
+  }
+}
+
+@media (min-width: 1200px) {
+  .btn {
+    &--menu {
+      display: none;
+    }
+  }
 }

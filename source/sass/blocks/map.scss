@@ -5,21 +5,65 @@
 
 .map-image__object {
   transition-duration: 200ms;
-  fill: #3bd11d;
 
-  &:hover {
-    fill: darken(#3bd11d, 20%);
+  &--learning{
+    fill: $learning-color;
+
+    &:hover {
+      fill: darken($learning-color, 20%);
+    }
   }
 
-  &--extra{
+  &--admin {
+    fill: $admin-color;
+
+    &:hover {
+      fill: darken($admin-color, 20%);
+    }
+  }
+
+  &--sport {
+    fill: $sport-color;
+
+    &:hover {
+      fill: darken($sport-color, 20%);
+    }
+  }
+
+  &--living {
+    fill: $living-color;
+
+    &:hover {
+      fill: darken($living-color, 20%);
+    }
+  }
+
+  &--culture {
+    fill: $culture-color;
+
+    &:hover {
+      fill: darken($culture-color, 20%);
+    }
+  }
+
+  &--extra {
     fill: none;
-    stroke: #3bd11d;
+    stroke: $learning-color;
     stroke-width: 5px;
 
-    &:hover{
+    &:hover {
       fill: none;
-      stroke: darken(#3bd11d, 20%);
+      stroke: darken($learning-color, 20%);
     }
+  }
+
+  &--neutral {
+    fill: $neutral-color !important;
+  }
+
+  &--neutral-extra {
+    fill: none !important;
+    stroke: $neutral-color !important;
   }
 }
 

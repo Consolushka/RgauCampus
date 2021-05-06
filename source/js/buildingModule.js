@@ -21,10 +21,9 @@
 
       this.fillGeneralInfo();
 
-      if(Object.keys(this.buildingData.flrs).length === 0){
+      if (!this.buildingData.flrs || Object.keys(this.buildingData.flrs).length === 0) {
         this.showEmptyInfo();
-      }
-      else{
+      } else {
         this.fillEntities();
       }
     },
@@ -41,10 +40,9 @@
 
     fillGeneralInfo(){
 
-      let purpose = String(this.buildingData.purpose)[0].toUpperCase() + String(this.buildingData.purpose).slice(1);
-
       this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
-      this.popupObject.querySelector(`.js-popup-purpose`).textContent = purpose;
+      this.popupObject.querySelector(`.js-popup-purpose`).textContent = window.utilModule.BUILDING_PURPOSE_TRANSLATOR[this.buildingData.purpose];
+      this.popupObject.querySelector(`.js-popup-address`).textContent = `${this.buildingData.address}`;
       if (this.buildingData.extra) {
         this.popupObject.querySelector(`.js-popup-extra`).classList.remove("visually-hidden");
         this.popupObject.querySelector(`.js-popup-extra`).textContent = this.buildingData.extra;

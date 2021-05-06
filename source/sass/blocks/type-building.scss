@@ -1,0 +1,57 @@
+.building-type-color {
+  width: 30px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+
+  &--learning {
+    background-color: $learning-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken($learning-color, 20%);
+    }
+  }
+
+  &--admin {
+    background-color: $admin-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken($admin-color, 20%);
+    }
+  }
+
+  &--sport {
+    background-color: $sport-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken($sport-color, 20%);
+    }
+  }
+
+  &--leaving {
+    background-color: $living-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken($living-color, 20%);
+    }
+  }
+
+  &--culture {
+    background-color: $culture-color;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 0 10px darken($culture-color, 20%);
+    }
+  }
+}

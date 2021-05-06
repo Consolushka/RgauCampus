@@ -1,0 +1,151 @@
+[
+  {
+    "path": "path",
+    "living": [
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "0",
+        "name": "1"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "1",
+        "name": "2"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "2",
+        "name": "3"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "3",
+        "name": "4"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "4",
+        "name": "5"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "5",
+        "name": "6"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "6",
+        "name": "7"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "7",
+        "name": "8"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "8",
+        "name": "9"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "9",
+        "name": "10"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "10",
+        "name": "11"
+      },
+      {
+        "purpose": "living",
+        "address": "Лиственничная аллея",
+        "id": "11",
+        "name": "13"
+      }
+    ],
+    "sport": [
+      {
+        "purpose": "sport",
+        "address": "Лиственничная аллея",
+        "id": "0",
+        "name": "СК"
+      },
+      {
+        "purpose": "sport",
+        "address": "Лиственничная аллея",
+        "id": "1",
+        "name": "Стадион"
+      },
+      {
+        "purpose": "sport",
+        "address": "Лиственничная аллея",
+        "id": "2",
+        "name": "Теннисный корт"
+      },
+      {
+        "purpose": "sport",
+        "address": "Лиственничная аллея",
+        "id": "3",
+        "name": "Конный манеж"
+      }
+    ],
+    "admin": [
+      {
+        "purpose": "admin",
+        "address": "Лиственничная аллея",
+        "id": "0",
+        "name": "10"
+      },
+      {
+        "purpose": "admin",
+        "address": "Лиственничная аллея",
+        "id": "1",
+        "name": "8"
+      },
+      {
+        "purpose": "admin",
+        "address": "Лиственничная аллея",
+        "id": "2",
+        "name": "20"
+      },
+      {
+        "purpose": "admin",
+        "address": "Лиственничная аллея",
+        "id": "3",
+        "name": "Приемная комиссия"
+      }
+    ],
+    "culture": [
+      {
+        "purpose": "culture",
+        "address": "Лиственничная аллея",
+        "id": "0",
+        "name": "Библиотека"
+      },
+      {
+        "purpose": "culture",
+        "address": "Лиственничная аллея",
+        "id": "1",
+        "name": "Музей Истории академии"
+      },
+      {
+        "purpose": "culture",
+        "address": "Лиственничная аллея",
+        "id": "2",
+        "name": "Дом культуры"
+      }
+    ]
+  }
+]

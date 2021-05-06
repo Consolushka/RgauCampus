@@ -24,6 +24,13 @@
         th: `Пятом`
       },
     },
+    BUILDING_PURPOSE_TRANSLATOR:{
+      learning: "Учебный корпус №",
+      admin: "Административное здание",
+      sport: "",
+      living: "Общежитие №",
+      culture: ""
+    },
     windowWidth: document.documentElement.clientWidth,
     getSimpleTranslate(i) {
       return this.FLOOR_TRANSLATOR[i + 1].simple;

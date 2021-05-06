@@ -5,7 +5,8 @@
   let CampusCount = 37;
 
   window.dataModule = {
-    campuses: [],
+    buildings: [],
+    other: {},
     mockData() {
       for (let i = 1; i < CampusCount + 1; i++) {
         let campus = {
@@ -35,16 +36,17 @@
             rooms: [301, 302, 329]
           }
         };
-        this.campuses.push(campus);
+        this.buildings.push(campus);
       }
     },
-    readJsonData(file){
+    readJsonData(output, file) {
       var rawFile = new XMLHttpRequest();
+      let data;
       rawFile.overrideMimeType("application/json");
       rawFile.open("GET", file, true);
-      rawFile.onreadystatechange = function() {
+      rawFile.onreadystatechange = function () {
         if (rawFile.readyState === 4 && rawFile.status == "200") {
-          window.dataModule.campuses = JSON.parse(rawFile.responseText);
+          window.dataModule[output] = JSON.parse(rawFile.responseText);
         }
       }
       rawFile.send(null);
