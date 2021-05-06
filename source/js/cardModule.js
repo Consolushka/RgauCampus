@@ -1,23 +1,51 @@
 'use strict';
 
 (function () {
+  class Building{
+    constructor(el) {
+      this.element = el;
+      this.buildingName = el.dataset.number;
+      this.type = el.dataset.type;
+      this.rect = this.element.getBoundingClientRect();
+    }
+  }
+
+  class LearningBuilding extends Building{
+    constructor(el) {
+      super(el);
+      this.data = window.dataModule.buildings.find((building)=>{
+        if(building.name.toLowerCase() === this.buildingName.toLowerCase()){
+          return building;
+        }
+      })
+    }
+  }
+
+  class OtherTypeBuilding extends Building{
+    constructor(el) {
+      super(el);
+      this.data = window.dataModule.other[0][this.type].find((building) => {
+        if (building.name.toLowerCase() === this.buildingName.toLowerCase()) {
+          return building;
+        }
+      });
+    }
+  }
+
   window.cardModule = {
     popupObject: document.querySelector(`.js-popup-all`),
 
     show(object) {
-      this.object = object;
-      this.getObjectData();
-
-      switch (this.object.dataset.type) {
+      switch (object.dataset.type) {
         case "learning":
-          this.getLearningBuildingData();
+          this.building = new LearningBuilding(object);
           break;
         default:
-          this.getOtherBuildingData();
+          this.building = new OtherTypeBuilding(object);
           break;
       }
 
-      window.building.fillBuildingStructure(this.buildingData, this.popupObject);
+      window.building.fillBuildingStructure(this.building.data, this.popupObject);
 
       this.popupObject.classList.remove(`popup--hidden`);
       if (window.utilModule.windowWidth >= 720) {
@@ -26,36 +54,15 @@
       this.listenClosePopup();
     },
 
-    getObjectData() {
-      this.buildingObject = this.object;
-      this.buildingRect = this.buildingObject.getBoundingClientRect();
-    },
-
-    getLearningBuildingData() {
-      window.dataModule.buildings.forEach((item) => {
-        if (item.name.toLowerCase() === this.buildingObject.dataset.number.toLowerCase()) {
-          this.buildingData = item;
-        }
-      });
-    },
-
-    getOtherBuildingData() {
-      window.dataModule.other[0][this.buildingObject.dataset.type].forEach((item) => {
-        if (item.name.toLowerCase() === this.buildingObject.dataset.number.toLowerCase()) {
-          this.buildingData = item;
-        }
-      });
-    },
-
     locatePopup() {
-      let posX = this.buildingRect.left + this.buildingRect.width,
-        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 + window.pageYOffset;
-      if (this.buildingRect.left + this.buildingRect.width > window.document.documentElement.clientWidth / 3 * 2) {
-        posX = this.buildingRect.left - this.buildingRect.width - this.popupObject.clientWidth;
-      }
-      if (this.buildingRect.top + this.buildingRect.height / 3 * 2 + this.popupObject.getBoundingClientRect().height > document.documentElement.clientHeight) {
-        posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 - this.popupObject.getBoundingClientRect().height + window.pageYOffset;
-      }
+      let posX = this.building.rect.left + this.building.rect.width,
+        posY = this.building.rect.top + this.building.rect.height / 3 * 2 + window.pageYOffset;
+      // if (this.buildingRect.left + this.buildingRect.width > window.document.documentElement.clientWidth / 3 * 2) {
+      //   posX = this.buildingRect.left - this.buildingRect.width - this.popupObject.clientWidth;
+      // }
+      // if (this.buildingRect.top + this.buildingRect.height / 3 * 2 + this.popupObject.getBoundingClientRect().height > document.documentElement.clientHeight) {
+      //   posY = this.buildingRect.top + this.buildingRect.height / 3 * 2 - this.popupObject.getBoundingClientRect().height + window.pageYOffset;
+      // }
       this.popupObject.setAttribute(`style`, `left: ${posX}px; top: ${posY}px`);
     },
 
