@@ -1,49 +1,15 @@
 'use strict';
 
+import {BuildingElement} from "./classes";
+
 (function () {
-  class Building{
-    constructor(el) {
-      this.element = el;
-      this.buildingName = el.dataset.number;
-      this.type = el.dataset.type;
-      this.rect = this.element.getBoundingClientRect();
-    }
-  }
-
-  class LearningBuilding extends Building{
-    constructor(el) {
-      super(el);
-      this.data = window.dataModule.buildings.find((building)=>{
-        if(building.name.toLowerCase() === this.buildingName.toLowerCase()){
-          return building;
-        }
-      })
-    }
-  }
-
-  class OtherTypeBuilding extends Building{
-    constructor(el) {
-      super(el);
-      this.data = window.dataModule.other[0][this.type].find((building) => {
-        if (building.name.toLowerCase() === this.buildingName.toLowerCase()) {
-          return building;
-        }
-      });
-    }
-  }
 
   window.cardModule = {
     popupObject: document.querySelector(`.js-popup-all`),
 
     show(object) {
-      switch (object.dataset.type) {
-        case "learning":
-          this.building = new LearningBuilding(object);
-          break;
-        default:
-          this.building = new OtherTypeBuilding(object);
-          break;
-      }
+      this.building = new BuildingElement(object);
+      console.log(building);
 
       window.building.fillBuildingStructure(this.building.data, this.popupObject);
 

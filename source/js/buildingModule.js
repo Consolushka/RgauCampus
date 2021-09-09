@@ -43,7 +43,7 @@
       this.popupObject.querySelector(`.info__name-number`).textContent = `${this.buildingData.name}`;
       this.popupObject.querySelector(`.js-popup-purpose`).textContent = window.utilModule.BUILDING_PURPOSE_TRANSLATOR[this.buildingData.purpose];
       this.popupObject.querySelector(`.js-popup-address`).textContent = `${this.buildingData.address}`;
-      if (this.buildingData.extra) {
+      if (this.buildingData.extra != "None") {
         this.popupObject.querySelector(`.js-popup-extra`).classList.remove("visually-hidden");
         this.popupObject.querySelector(`.js-popup-extra`).textContent = this.buildingData.extra;
       }
@@ -75,11 +75,11 @@
     },
 
     insertRoomsIntoContainer(data, container) {
-      data.forEach((room) => {
+      data.rooms.forEach((room) => {
         let roomFragment = document.createElement(`li`);
         roomFragment.className = `info__rooms-list-item`;
-        roomFragment.textContent = Object.keys(room)[0];
-        roomFragment.setAttribute(`title`, `${room[Object.keys(room)[0]]}`);
+        roomFragment.textContent = room.name;
+        roomFragment.setAttribute(`title`, `${room.purpose}`);
         container.querySelector(`.info__rooms-list`).appendChild(roomFragment);
       });
       return container;
@@ -92,10 +92,10 @@
       heading.textContent = "Кафедры";
       CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(this.buildingData.owners).forEach((cathedra) => {
+      this.buildingData.owners.forEach((cathedra) => {
         let cathedraFragment = CATHEDRA_TEMPLATE.cloneNode(true);
-        cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra;
-        cathedraFragment = this.insertRoomsIntoContainer(this.buildingData.owners[cathedra], cathedraFragment);
+        cathedraFragment.querySelector(`.cathedra-title`).textContent = cathedra.name;
+        cathedraFragment = this.insertRoomsIntoContainer(cathedra, cathedraFragment);
         CATHEDRA_CONTAINER.insertAdjacentHTML(`beforeend`, cathedraFragment.outerHTML);
       })
     },
@@ -107,10 +107,10 @@
       heading.textContent = "Факультеты и Институты";
       FACS_CONTAINER.insertAdjacentHTML(`beforeend`, heading.outerHTML);
 
-      Object.keys(this.buildingData.facs).forEach((fac) => {
+      this.buildingData.facs.forEach((fac) => {
         let facFragment = FACS_TEMPLATE.cloneNode(true);
-        facFragment.querySelector(`.fac-title`).textContent = fac;
-        facFragment = this.insertRoomsIntoContainer(this.buildingData.facs[fac], facFragment);
+        facFragment.querySelector(`.fac-title`).textContent = fac.name;
+        facFragment = this.insertRoomsIntoContainer(fac, facFragment);
         FACS_CONTAINER.insertAdjacentHTML(`beforeend`, facFragment.outerHTML);
       })
     }

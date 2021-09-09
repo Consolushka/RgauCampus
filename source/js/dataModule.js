@@ -1,12 +1,19 @@
 'use strict';
 
+  import {BuildingData, LearningBuildingData} from './classes.js';
 (function () {
+
 
   let CampusCount = 37;
 
   window.dataModule = {
-    buildings: [],
-    other: {},
+    buildings: {
+      "learning": [],
+      "admin": [],
+      "culture": [],
+      "sport": [],
+      "leaving": []
+    },
     mockData() {
       for (let i = 1; i < CampusCount + 1; i++) {
         let campus = {
@@ -44,12 +51,24 @@
       let data;
       rawFile.overrideMimeType("application/json");
       rawFile.open("GET", file, true);
-      rawFile.onreadystatechange = function () {
+      rawFile.onreadystatechange = () => {
         if (rawFile.readyState === 4 && rawFile.status == "200") {
-          window.dataModule[output] = JSON.parse(rawFile.responseText);
+          this.filterBuildingsByPurpose(JSON.parse(rawFile.responseText));
         }
       }
       rawFile.send(null);
+    },
+    filterBuildingsByPurpose(buildings) {
+      buildings.forEach((building) => {
+        this.buildings[building.purpose].push(this.buildingsFactory(building));
+      });
+      console.log(this.buildings);
+    },
+    buildingsFactory(building) {
+      if (building.purpose === "leaving") {
+        return new LearningBuildingData(building)
+      }
+      return new BuildingData(building)
     }
   };
 })();
