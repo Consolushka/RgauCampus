@@ -1,6 +1,22 @@
 'use strict';
 
-  import {BuildingData, LearningBuildingData} from './classes.js';
+  class BuildingData {
+  constructor(data) {
+    this.name = data.name
+    this.address = data.address
+    this.extra = data.extra
+  }
+}
+
+class LearningBuildingData extends BuildingData{
+  constructor(data) {
+    super(data);
+    this.flrs = data.flrs;
+    this.facs = data.facs;
+    this.owners = data.owners;
+  }
+}
+
 (function () {
 
 
@@ -62,10 +78,9 @@
       buildings.forEach((building) => {
         this.buildings[building.purpose].push(this.buildingsFactory(building));
       });
-      console.log(this.buildings);
     },
     buildingsFactory(building) {
-      if (building.purpose === "leaving") {
+      if (building.purpose === "learning") {
         return new LearningBuildingData(building)
       }
       return new BuildingData(building)

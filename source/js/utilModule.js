@@ -28,15 +28,15 @@
       learning: "Учебный корпус №",
       admin: "Административное здание",
       sport: "",
-      living: "Общежитие №",
+      leaving: "Общежитие №",
       culture: ""
     },
     windowWidth: document.documentElement.clientWidth,
     getSimpleTranslate(i) {
-      return this.FLOOR_TRANSLATOR[i + 1].simple;
+      return this.FLOOR_TRANSLATOR[i].simple;
     },
     getThTranslate(i) {
-      return this.FLOOR_TRANSLATOR[i + 1].th;
+      return this.FLOOR_TRANSLATOR[i].th;
     }
   }
 })();

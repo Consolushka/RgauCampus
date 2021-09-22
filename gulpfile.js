@@ -13,6 +13,7 @@ var tap = require("gulp-tap");
 var imagemin = require("gulp-imagemin");
 var webp = require("gulp-webp");
 var svgstore = require("gulp-svgstore");
+var babel = require("gulp-babel");
 
 var del = require("del");
 
@@ -35,6 +36,14 @@ gulp.task("css", function () {
     .pipe(sourcemap.write("."))
     .pipe(gulp.dest("build/css"))
     .pipe(server.stream());
+});
+
+gulp.task("js", function (){
+  return gulp.src('source/js/classes.js')
+        .pipe(babel({
+            presets: ['@babel/preset-env']
+        }))
+    .pipe(gulp.dest("build"))
 });
 
 gulp.task("startworking", function () {
@@ -82,7 +91,9 @@ gulp.task("images", function () {
 });
 
 gulp.task("jscopy", function () {
-  return gulp.src("source/js/*.js")
+  return gulp.src("source/js/*.js").pipe(babel({
+            presets: ['@babel/env']
+        }))
     .pipe(gulp.dest("build/js/"))
 });
 

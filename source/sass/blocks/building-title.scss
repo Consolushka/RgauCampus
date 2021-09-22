@@ -1,4 +1,4 @@
-.building-title{
+.building-title {
   padding: 7px;
   border-radius: 4px;
   color: #ffffff;
@@ -7,7 +7,7 @@
     margin-bottom: 0;
   }
 
-  &--learning{
+  &--learning {
     background: darken($learning-color, 20%);
   }
 
@@ -19,7 +19,7 @@
     background: darken($sport-color, 20%);
   }
 
-  &--living {
+  &--leaving {
     background: darken($living-color, 20%);
   }
 

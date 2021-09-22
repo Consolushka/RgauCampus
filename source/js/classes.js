@@ -15,11 +15,27 @@ export class LearningBuildingData extends BuildingData{
   }
 }
 
-export class BuildingElement{
-    constructor(el) {
-      this.element = el;
-      this.buildingName = el.dataset.number;
-      this.type = el.dataset.type;
-      this.rect = this.element.getBoundingClientRect();
-    }
+export class BuildingElement {
+  constructor(el) {
+    this.element = el;
+    this.type = el.dataset.type;
+    this.rect = this.element.getBoundingClientRect();
+    this.FillFullInfo(el.dataset.number);
   }
+
+  FillFullInfo(name) {
+    window.dataModule.buildings[this.type].forEach((data) => {
+      if (data.name === name) {
+        console.log(data);
+        this.name = data.name;
+        this.address = data.address;
+        this.extra = data.extra;
+        if (this.type === "learning") {
+          this.flrs = data.flrs;
+          this.facs = data.facs;
+          this.owners = data.owners;
+        }
+      }
+    });
+  }
+}

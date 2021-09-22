@@ -36,7 +36,7 @@
     },
 
     getObjectData() {
-      window.dataModule.buildings.forEach((item) => {
+      window.dataModule.buildings[this.buildingObject.dataset.type].forEach((item) => {
         if (item.name === this.buildingObject.dataset.number) {
           this.buildingData = item;
         }
