@@ -91,9 +91,7 @@ gulp.task("images", function () {
 });
 
 gulp.task("jscopy", function () {
-  return gulp.src("source/js/*.js").pipe(babel({
-            presets: ['@babel/env']
-        }))
+  return gulp.src("source/js/*.js")
     .pipe(gulp.dest("build/js/"))
 });
 

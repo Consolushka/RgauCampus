@@ -152,6 +152,13 @@ class BuildingElement {
     locatePopup() {
       let posX = this.building.rect.left + this.building.rect.width,
         posY = this.building.rect.top + this.building.rect.height / 3 * 2 + window.pageYOffset;
+      console.log(posX,window.innerWidth);
+      if (posX+window.innerWidth*0.33>window.innerWidth){
+        posX-=window.innerWidth*0.33;
+      }
+      if(posY+this.popupObject.offsetHeight>window.innerHeight){
+        posY-=this.popupObject.offsetHeight;
+      }
       this.popupObject.setAttribute(`style`, `left: ${posX}px; top: ${posY}px`);
     },
 
