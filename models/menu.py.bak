@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+response.link_menu = [('#' if request.function == 'swed' else URL('swed'),
+                      'k-blue' if request.function == 'swed' else 'grey'),
+                     ('#' if request.function == 'edu' else URL('edu'),
+                      'k-blue' if request.function == 'edu' else 'grey'),
+                     ('#' if request.function == 'select_cg' else URL('select_cg'),
+                      'k-blue' if request.function == 'select_cg' else 'grey'),
+                     ('#' if request.function == 'marks' else URL('marks'),
+                      'k-blue' if request.function == 'marks' else 'grey'),
+                     ('#' if request.function == 'docs' else URL('docs'),
+                      'k-blue' if request.function == 'docs' else 'grey'),
+                     ('#' if request.function == 'send_app' else URL('send_app'),
+                      'k-blue' if request.function == 'send_app' else 'grey')]
+
+response.btn_menu = [('' if request.function == 'swed' else XML('data-number="0"'),
+                      'k-blue' if request.function == 'swed' else 'grey'),
+                     ('' if request.function == 'edu' else XML('data-number="1"'),
+                      'k-blue' if request.function == 'edu' else 'grey'),
+                     ('' if request.function == 'select_cg' else XML('data-number="2"'),
+                      'k-blue' if request.function == 'select_cg' else 'grey'),
+                     ('' if request.function == 'marks' else XML('data-number="3"'),
+                      'k-blue' if request.function == 'marks' else 'grey'),
+                     ('' if request.function == 'docs' else XML('data-number="4"'),
+                      'k-blue' if request.function == 'docs' else 'grey'),
+                     ('' if request.function == 'send_app' else XML('data-number="5"'),
+                      'k-blue' if request.function == 'send_app' else 'grey')]

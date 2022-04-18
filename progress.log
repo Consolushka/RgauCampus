@@ -1,0 +1,17 @@
+[2021-09-03 16:33:50] START
+[2021-09-03 16:38:05] EDIT rgaumap/models/db.py: -5
+[2021-09-03 16:38:39] EDIT rgaumap/models/menu.py: -73
+[2021-09-03 16:39:03] EDIT rgaumap/models/menu.py: 0
+[2021-09-03 16:47:22] EDIT rgaumap/controllers/default.py: -38
+[2021-09-13 16:52:06] EDIT rgaumap/views/default/index.html: 1
+[2021-09-13 17:19:42] EDIT rgaumap/views/default/index.html: 1
+[2021-09-13 17:19:51] EDIT rgaumap/views/default/index.html: 0
+[2021-09-13 17:20:11] EDIT rgaumap/views/default/index.html: 0
+[2021-09-13 17:24:04] EDIT rgaumap/static/js/dataModule.js: -6
+[2021-09-13 17:29:40] EDIT rgaumap/views/default/index.html: 3
+[2021-09-13 18:03:53] EDIT rgaumap/static/js/classes.js: 8
+[2021-09-15 17:02:55] EDIT rgaumap/static/js/cardModule.js: 0
+[2021-09-15 17:05:22] EDIT rgaumap/static/js/cardModule.js: -1
+[2021-09-15 17:09:47] EDIT rgaumap/static/js/main.js: -1
+[2021-09-15 17:10:02] EDIT rgaumap/views/default/index.html: -1
+[2021-10-06 15:51:17] EDIT rgaumap/views/default/index.html: -4
